@@ -1,6 +1,7 @@
 prompt: |
   Editorial documentary photograph, 16:9 landscape aspect ratio. Interior of a hospital plant room at night. A single portable H-class HEPA-filtered negative-pressure extraction unit sits beside a hazardous materials consultant, who works under a bright site-work LED lamp casting hard precise shadows. The consultant wears full white Tyvek coverall hood-up, an orange P3 respirator, disposable nitrile gloves, and safety glasses. They carefully place a small piece of ceiling material into a clear sample bag. Plant room has exposed structural steel, insulated pipes, dark concrete floor. Fine dust particulate suspended in the extraction airflow catches the LED light. Dramatic three-quarter view composition, face fully obscured. Cool palette — cyan-tinted whites, warm halogen accent, dark structural steel, deep black shadow. Fine documentary grain, sharp focus on the sample bag. No text, no logos, no identifying details, no visible faces. Realistic professional documentary photography.
 model: gemini-2.5-flash-image
+aspect_ratio: "16:9"
 generated: 2026-07-05
 usage: hero
 approved_by: []

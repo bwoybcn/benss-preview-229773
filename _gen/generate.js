@@ -21,7 +21,10 @@ const prompts = {
 };
 
 function post(model, prompt) {
-  const body = JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] });
+  const body = JSON.stringify({
+    contents: [{ parts: [{ text: prompt }] }],
+    generationConfig: { imageConfig: { aspectRatio: '16:9' } }  // v4: proper landscape output
+  });
   return new Promise((resolve, reject) => {
     const req = https.request({
       method: 'POST',
@@ -70,7 +73,7 @@ async function pickModel() {
       fs.writeFileSync(png, buf);
       console.log(`OK (${buf.length} bytes)`);
       results.push(name);
-      const yaml = `prompt: |\n  ${prompt.replace(/\n/g, '\n  ')}\nmodel: ${MODEL}\ngenerated: ${new Date().toISOString().slice(0, 10)}\nusage: hero\napproved_by: []\n`;
+      const yaml = `prompt: |\n  ${prompt.replace(/\n/g, '\n  ')}\nmodel: ${MODEL}\naspect_ratio: "16:9"\ngenerated: ${new Date().toISOString().slice(0, 10)}\nusage: hero\napproved_by: []\n`;
       fs.writeFileSync(path.join(OUT, `${name}.meta.yaml`), yaml);
     } catch (e) {
       console.log(`error: ${e.message}`);

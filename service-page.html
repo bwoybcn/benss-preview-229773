@@ -165,10 +165,10 @@
   @media (prefers-reduced-motion:reduce){*, *::before, *::after{transition:none !important;animation:none !important;}}
 
   /* ===== v3 nano-banana imagery ===== */
-  /* v3.2: force horizontal overflow so we can re-anchor square 1024x1024 renders */
-  .related-cases .case-cover { background-size:200% auto !important; background-repeat:no-repeat; background-color:#4A3D2E; }
-  .related-cases .case:nth-child(1) .case-cover { background-image:url("./img/case004-hospital-ward-corridor.png"); background-position:100% 40%; }
-  .related-cases .case:nth-child(2) .case-cover { background-image:url("./img/case007-heritage-warehouse.png"); background-position:center 45%; }
+  /* v4: images now native 16:9 — plain cover */
+  .related-cases .case-cover { background-size:cover !important; background-position:center 45% !important; background-repeat:no-repeat; background-color:#4A3D2E; }
+  .related-cases .case:nth-child(1) .case-cover { background-image:url("./img/case004-hospital-ward-corridor.png"); }
+  .related-cases .case:nth-child(2) .case-cover { background-image:url("./img/case007-heritage-warehouse.png"); }
   .related-cases .case-cover::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%); pointer-events:none; }
   .related-cases .case-cover .ref, .related-cases .case-cover .cat { z-index:1; }
 </style>

@@ -1,6 +1,7 @@
 prompt: |
   Editorial documentary photograph, 16:9 landscape aspect ratio. Interior of a 1930s Australian inner-city warehouse — exposed red brick walls, timber king-post trusses, high clerestory windows, dust motes suspended in shafts of natural daylight. A hazardous materials consultant stands in the middle of the empty industrial hall, tablet in hand, surveying the space. They wear white Tyvek coverall unzipped at the top with hood down, a P3 respirator hung around the neck, hi-vis vest over the coverall, safety glasses. Wide medium-shot composition — consultant small in frame to emphasise the scale and heritage character. Facing away from camera, face not visible. Muted warm palette — terracotta brick, weathered timber, cool daylight streaming through clerestory. Fine documentary grain. No signage, no legible text, no logos, no visible face. Realistic professional documentary photography, not illustration.
 model: gemini-2.5-flash-image
+aspect_ratio: "16:9"
 generated: 2026-07-05
 usage: hero
 approved_by: []
