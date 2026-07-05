@@ -163,6 +163,12 @@
   .sidecard button:hover{background:#8f1e18;}
   .sidecard button:active{transform:translateY(1px);}
   @media (prefers-reduced-motion:reduce){*, *::before, *::after{transition:none !important;animation:none !important;}}
+
+  /* ===== v3 nano-banana imagery ===== */
+  .related-cases .case:nth-child(1) .case-cover { background: #4A3D2E url("./img/case004-hospital-ward-corridor.png") center/cover no-repeat; }
+  .related-cases .case:nth-child(2) .case-cover { background: #4A3D2E url("./img/case007-heritage-warehouse.png") center/cover no-repeat; }
+  .related-cases .case-cover::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%); pointer-events:none; }
+  .related-cases .case-cover .ref, .related-cases .case-cover .cat { z-index:1; }
 </style>
 
 <nav class="top">

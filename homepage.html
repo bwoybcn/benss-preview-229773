@@ -184,6 +184,15 @@
   .footer ul li a { color:var(--ink-700); text-decoration:none; }
   .footer .contact { font-family:var(--f-mono); font-size:12px; line-height:1.8; color:var(--ink-700); }
   .footer .legal { border-top:1px solid var(--ink-300); margin-top:32px; padding-top:14px; display:flex; justify-content:space-between; font-family:var(--f-mono); font-size:11px; color:var(--ink-500); flex-wrap:wrap; gap:12px; }
+
+  /* ===== v3 nano-banana imagery ===== */
+  .hp .hero-figure { background: #2B2620 url("./img/hero-consultant-tyvek-ceiling-void.png") center/cover no-repeat; }
+  .hp .hero-figure::before { display:none; } /* remove grid overlay so photo reads clean */
+  .hp .hero-figure::after { background:rgba(0,0,0,.5); padding:6px 10px; border-radius:2px; bottom:16px; left:18px; right:auto; max-width:calc(100% - 60px); color:rgba(255,255,255,.85); }
+  .hp .case:nth-of-type(1) .cover { background: #4A3D2E url("./img/case004-hospital-ward-corridor.png") center/cover no-repeat; }
+  .hp .case:nth-of-type(2) .cover { background: #4A3D2E url("./img/case007-heritage-warehouse.png") center/cover no-repeat; }
+  .hp .case:nth-of-type(3) .cover { background: #4A3D2E url("./img/case011-utility-depot-stack.png") center/cover no-repeat; }
+  .hp .case .cover::before { background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%); background-size:auto; } /* dark scrim so ref+cat stay readable */
 </style>
 
 <h2>Homepage anatomy</h2>
