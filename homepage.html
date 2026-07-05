@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>BENSS · Homepage preview</title>
+</head>
+<body style="margin:0;background:#F5F1EA;">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fraunces:400,500,600|source-serif-4:400,600|manrope:400,500,600,700|ibm-plex-mono:400,500&display=swap">
+
+<style>
+  :root {
+    --ink-900:#17140F; --ink-700:#3A342A; --ink-500:#6C6355; --ink-300:#B9B0A0; --ink-200:#D9D0BE;
+    --paper:#F5F1EA; --paper-2:#EFE9DD; --card:#FFFFFF;
+    --hazard:#B7261F; --hazard-tint:#FCE9E8;
+    --link:#7A0000; --success:#2E6B44;
+    --f-display:'Fraunces',ui-serif,Georgia,serif;
+    --f-body:'Source Serif 4','Iowan Old Style',Georgia,serif;
+    --f-ui:'Manrope','Söhne',system-ui,sans-serif;                 /* v2: Manrope replaces Inter — more character, still neutral */
+    --f-mono:'IBM Plex Mono',Consolas,monospace;
+    --ease-out:cubic-bezier(.2,.7,.2,1);                            /* v2: spring-ish easing token */
+    --dur-fast:140ms; --dur:220ms;                                  /* v2: duration tokens */
+    --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .09  0 0 0 0 .08  0 0 0 0 .06  0 0 0 .045 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .hp { background:var(--paper); color:var(--ink-900); border-radius:14px; overflow:hidden; margin:12px 0; box-shadow:0 30px 80px rgba(0,0,0,.14); position:relative; }
+  .hp::after { /* v2: paper-grain overlay kills the flat-vector feel */
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background-image:var(--grain); background-size:240px 240px;
+    mix-blend-mode:multiply; opacity:.35; z-index:1;
+  }
+  .hp > * { position:relative; z-index:2; }
+  .hp * { box-sizing:border-box; }
+  .hp h1, .hp h2, .hp h3, .hp blockquote { text-wrap:balance; }     /* v2: kills orphaned words on all display type */
+  .hp p, .hp li { text-wrap:pretty; }                                /* v2: kills last-line orphans on prose */
+  .hp .stat .n, .hp .accred .v { font-variant-numeric:tabular-nums; }/* v2: aligned numerics */
+  .hp :focus-visible { outline:2px solid var(--hazard); outline-offset:2px; border-radius:1px; } /* v2: visible focus for a11y */
+  @media (prefers-reduced-motion:reduce) { .hp *, .hp *::before, .hp *::after { transition:none !important; animation:none !important; } }
+  .hp .lbl { font-family:var(--f-ui); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-500); }
+  .hp p { font-family:var(--f-body); color:var(--ink-700); line-height:1.65; margin:0; }
+
+  /* ===== NAV ===== */
+  .nav { display:flex; align-items:center; justify-content:space-between; padding:20px 40px; border-bottom:1px solid var(--ink-200); background:var(--paper); }
+  .nav .brand { font-family:var(--f-display); font-weight:600; font-size:22px; letter-spacing:-.01em; color:var(--ink-900); }
+  .nav .brand .dot { color:var(--hazard); }
+  .nav ul { list-style:none; display:flex; gap:28px; margin:0; padding:0; font-family:var(--f-ui); font-size:14px; font-weight:500; }
+  .nav ul a { color:var(--ink-900); text-decoration:none; position:relative; transition:color var(--dur) var(--ease-out); }
+  .nav ul a::after { content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:var(--hazard); transform:scaleX(0); transform-origin:left; transition:transform var(--dur) var(--ease-out); }
+  .nav ul a:hover { color:var(--hazard); }
+  .nav ul a:hover::after { transform:scaleX(1); }
+  .nav .cta-row { display:flex; align-items:center; gap:16px; }
+  .nav .phone { font-family:var(--f-mono); font-size:13px; color:var(--ink-700); }
+  .nav .btn { display:inline-flex; padding:10px 16px; background:var(--ink-900); color:var(--paper); font-family:var(--f-ui); font-size:13px; font-weight:500; border-radius:2px; text-decoration:none; transition:background var(--dur) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
+  .nav .btn:hover { background:var(--hazard); }
+  .nav .btn:active { transform:translateY(1px); }
+
+  /* ===== HERO ===== */
+  .hero { padding:60px 40px 48px; display:grid; grid-template-columns:1fr; gap:40px; align-items:end; }
+  @media (min-width:960px) { .hero { grid-template-columns:1.15fr 1fr; padding:88px 60px 72px; } }
+  .hero .masthead { border-bottom:1px solid var(--ink-900); padding-bottom:8px; display:flex; justify-content:space-between; font-family:var(--f-ui); font-size:11px; letter-spacing:.16em; text-transform:uppercase; margin-bottom:26px; }
+  .hero .kicker { font-family:var(--f-ui); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--hazard); margin-bottom:18px; }
+  .hero .kicker::before { content:'▲ '; }
+  .hero h1 { font-family:var(--f-display); font-weight:400; font-size:clamp(40px,5.4vw,68px); line-height:1.02; letter-spacing:-.02em; margin:0 0 22px; color:var(--ink-900); }
+  .hero h1 em { font-style:italic; color:var(--hazard); }
+  .hero .deck { font-family:var(--f-body); font-size:19px; line-height:1.5; color:var(--ink-700); max-width:56ch; margin-bottom:30px; }
+  .hero .cta-row { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  .hero .btn-primary { display:inline-flex; align-items:center; gap:10px; padding:14px 22px; background:var(--ink-900); color:var(--paper); font-family:var(--f-ui); font-size:14px; font-weight:500; border-radius:2px; text-decoration:none; transition:background var(--dur) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
+  .hero .btn-primary:hover { background:var(--hazard); }
+  .hero .btn-primary:active { transform:translateY(1px); }
+  .hero .btn-primary::after { content:'→'; font-family:var(--f-mono); transition:transform var(--dur) var(--ease-out); }
+  .hero .btn-primary:hover::after { transform:translateX(3px); }
+  .hero .phone-cta { font-family:var(--f-mono); font-size:14px; color:var(--ink-900); }
+  .hero .phone-cta b { display:block; font-family:var(--f-ui); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-500); margin-bottom:2px; font-weight:500; }
+  .hero-figure { background:#2B2620; border-radius:2px; height:340px; position:relative; overflow:hidden; }
+  .hero-figure::before { content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:22px 22px; }
+  .hero-figure::after { content:'[ nano-banana · illustrative photograph · consultant in Tyvek suit, sampling ceiling void ]'; position:absolute; bottom:16px; left:18px; right:18px; font-family:var(--f-mono); font-size:11px; color:rgba(255,255,255,.5); letter-spacing:.02em; }
+  .hero-figure .cap { position:absolute; top:16px; right:18px; font-family:var(--f-ui); font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.55); background:rgba(0,0,0,.4); padding:4px 8px; }
+
+  /* ===== ACCREDITATION STRIP ===== */
+  .accred { display:grid; grid-template-columns:repeat(4,1fr); background:var(--card); border-top:1px solid var(--ink-900); border-bottom:1px solid var(--ink-900); }
+  .accred .a { padding:18px 22px; border-right:1px solid var(--ink-200); }
+  .accred .a:last-child { border-right:none; }
+  .accred .k { font-family:var(--f-ui); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-500); }
+  .accred .v { font-family:var(--f-mono); font-size:14px; color:var(--ink-900); margin-top:4px; }
+
+  /* ===== SERVICE PILLARS ===== */
+  .pillars { padding:80px 60px 60px; }
+  .pillars .section-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:36px; border-bottom:1px solid var(--ink-200); padding-bottom:14px; }
+  .pillars h2 { font-family:var(--f-display); font-weight:400; font-size:36px; letter-spacing:-.015em; margin:0; max-width:16ch; }
+  .pillars .section-head p { max-width:36ch; font-size:14px; color:var(--ink-500); }
+  .pillar-grid { display:grid; grid-template-columns:1fr; gap:24px; }
+  @media (min-width:900px) { .pillar-grid { grid-template-columns:repeat(3,1fr); } }
+  .pillar { border:1px solid var(--ink-300); padding:26px 24px 24px; background:var(--card); border-radius:2px; display:flex; flex-direction:column; gap:14px; position:relative; transition:transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out); }
+  .pillar:hover { transform:translateY(-2px); border-color:var(--ink-900); box-shadow:0 12px 30px rgba(23,20,15,.08); }
+  /* v2: break the 3-equal-cards symmetry — middle pillar is deliberately taller */
+  @media (min-width:900px) {
+    .pillar-grid > .pillar:nth-child(2) { transform:translateY(-16px); }
+    .pillar-grid > .pillar:nth-child(2):hover { transform:translateY(-18px); }
+  }
+  .pillar .no { font-family:var(--f-mono); font-size:11px; color:var(--hazard); letter-spacing:.1em; }
+  .pillar h3 { font-family:var(--f-display); font-weight:500; font-size:24px; margin:0; line-height:1.15; }
+  .pillar p { font-size:15px; }
+  .pillar ul { list-style:none; padding:0; margin:0; }
+  .pillar li { font-family:var(--f-ui); font-size:13px; color:var(--ink-700); padding:8px 0; border-top:1px dashed var(--ink-300); display:flex; justify-content:space-between; }
+  .pillar li:first-child { border-top:none; }
+  .pillar .more { font-family:var(--f-ui); font-size:13px; color:var(--link); text-decoration:underline; text-underline-offset:4px; margin-top:6px; }
+  .pillar .more::after { content:' →'; }
+
+  /* ===== STAT ROW ===== */
+  .stats { padding:0 60px; }
+  .stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:0; padding:36px 0; border-top:1px solid var(--ink-900); border-bottom:1px solid var(--ink-900); }
+  .stat { padding:0 20px; border-right:1px solid var(--ink-200); }
+  .stat:last-child { border-right:none; }
+  .stat .n { font-family:var(--f-mono); font-size:40px; font-weight:500; color:var(--ink-900); font-feature-settings:'tnum'; line-height:1; }
+  .stat .k { font-family:var(--f-ui); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-500); margin-top:10px; }
+
+  /* ===== CASE STUDIES ===== */
+  .cases { padding:80px 60px 60px; }
+  .cases .section-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:32px; border-bottom:1px solid var(--ink-200); padding-bottom:14px; }
+  .cases h2 { font-family:var(--f-display); font-weight:400; font-size:36px; letter-spacing:-.015em; margin:0; }
+  .cases .see-all { font-family:var(--f-ui); font-size:13px; color:var(--link); text-decoration:underline; text-underline-offset:4px; }
+  .case-grid { display:grid; grid-template-columns:1fr; gap:22px; }
+  @media (min-width:900px) { .case-grid { grid-template-columns:repeat(3,1fr); } }
+  .case { border:1px solid var(--ink-300); background:var(--card); border-radius:2px; overflow:hidden; display:flex; flex-direction:column; transition:transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out); }
+  .case:hover { transform:translateY(-3px); border-color:var(--ink-900); }
+  .case .cover { transition:filter var(--dur) var(--ease-out); }
+  .case:hover .cover { filter:brightness(1.08); }
+  .case .cover { height:150px; background:linear-gradient(135deg,#4A3D2E 0%,#17140F 100%); position:relative; }
+  .case .cover::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px); background-size:18px 18px; }
+  .case .ref { position:absolute; top:12px; left:14px; font-family:var(--f-mono); font-size:11px; color:rgba(255,255,255,.6); letter-spacing:.1em; }
+  .case .cat { position:absolute; top:12px; right:14px; font-family:var(--f-ui); font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.85); background:rgba(183,38,31,.85); padding:4px 8px; }
+  .case .body { padding:20px 22px 22px; flex:1; display:flex; flex-direction:column; gap:10px; }
+  .case h3 { font-family:var(--f-display); font-weight:400; font-size:22px; margin:0; line-height:1.2; }
+  .case p { font-size:14px; margin:0; }
+  .case .foot { border-top:1px dashed var(--ink-300); padding-top:12px; font-family:var(--f-mono); font-size:11px; color:var(--ink-500); letter-spacing:.06em; margin-top:auto; }
+
+  /* ===== TESTIMONIAL ===== */
+  .testimonial { background:var(--paper-2); padding:80px 60px; }
+  .testimonial-inner { max-width:900px; margin:0 auto; }
+  .testimonial .lbl { display:block; margin-bottom:18px; color:var(--hazard); }
+  .testimonial blockquote { font-family:var(--f-display); font-style:italic; font-weight:400; font-size:36px; line-height:1.28; margin:0; color:var(--ink-900); letter-spacing:-.01em; }
+  .testimonial cite { display:block; margin-top:26px; font-family:var(--f-ui); font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-500); font-style:normal; }
+  .testimonial cite b { color:var(--ink-900); font-weight:600; }
+
+  /* ===== LOGO STRIP ===== */
+  .logos { padding:44px 60px; border-top:1px solid var(--ink-200); border-bottom:1px solid var(--ink-200); }
+  .logos .lbl { text-align:center; display:block; margin-bottom:22px; }
+  .logo-strip { display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap; }
+  .logo-strip .lg { font-family:var(--f-ui); font-size:14px; font-weight:600; color:var(--ink-500); opacity:.75; letter-spacing:-.005em; }
+
+  /* ===== INDUSTRIES ===== */
+  .industries { padding:80px 60px 60px; }
+  .industries h2 { font-family:var(--f-display); font-weight:400; font-size:36px; letter-spacing:-.015em; margin:0 0 28px; border-bottom:1px solid var(--ink-200); padding-bottom:14px; }
+  .ind-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--ink-200); border:1px solid var(--ink-200); border-radius:2px; overflow:hidden; }
+  @media (max-width:900px) { .ind-grid { grid-template-columns:repeat(2,1fr); } }
+  .ind { background:var(--paper); padding:22px 20px; display:flex; flex-direction:column; gap:6px; min-height:110px; }
+  .ind .no { font-family:var(--f-mono); font-size:11px; color:var(--ink-500); }
+  .ind h4 { font-family:var(--f-display); font-weight:400; font-size:18px; margin:0; color:var(--ink-900); }
+  .ind p { font-size:12px; color:var(--ink-500); }
+
+  /* ===== FINAL CTA ===== */
+  .cta-final { background:var(--ink-900); color:var(--paper); padding:80px 60px; text-align:center; }
+  .cta-final h2 { font-family:var(--f-display); font-weight:400; font-size:44px; letter-spacing:-.015em; margin:0 0 18px; color:var(--paper); }
+  .cta-final h2 em { color:var(--hazard); font-style:italic; }
+  .cta-final p { color:#C5BCA8; font-size:17px; max-width:52ch; margin:0 auto 32px; }
+  .cta-final .row { display:inline-flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:center; }
+  .cta-final .btn { display:inline-flex; padding:14px 24px; background:var(--paper); color:var(--ink-900); font-family:var(--f-ui); font-size:14px; font-weight:500; text-decoration:none; border-radius:2px; }
+  .cta-final .btn:hover { background:var(--hazard); color:var(--paper); }
+  .cta-final .phone { font-family:var(--f-mono); font-size:15px; color:var(--paper); }
+  .cta-final .phone b { display:block; font-family:var(--f-ui); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#8B8579; margin-bottom:2px; font-weight:500; }
+
+  /* ===== FOOTER ===== */
+  .footer { background:var(--paper-2); padding:60px 60px 28px; }
+  .footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; }
+  @media (max-width:900px) { .footer-grid { grid-template-columns:1fr 1fr; } }
+  .footer h4 { font-family:var(--f-ui); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-500); margin:0 0 14px; font-weight:600; }
+  .footer .brand-blk .b { font-family:var(--f-display); font-size:22px; font-weight:600; color:var(--ink-900); }
+  .footer .brand-blk .b .dot { color:var(--hazard); }
+  .footer .brand-blk p { font-size:14px; margin-top:10px; max-width:36ch; }
+  .footer ul { list-style:none; padding:0; margin:0; }
+  .footer ul li { padding:5px 0; font-family:var(--f-ui); font-size:13px; }
+  .footer ul li a { color:var(--ink-700); text-decoration:none; }
+  .footer .contact { font-family:var(--f-mono); font-size:12px; line-height:1.8; color:var(--ink-700); }
+  .footer .legal { border-top:1px solid var(--ink-300); margin-top:32px; padding-top:14px; display:flex; justify-content:space-between; font-family:var(--f-mono); font-size:11px; color:var(--ink-500); flex-wrap:wrap; gap:12px; }
+</style>
+
+<h2>Homepage anatomy</h2>
+<p class="subtitle">Sections in order. Fully mocked at fidelity — this is close to what will ship. Scroll and look for anything that needs to move.</p>
+
+<div class="hp">
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="brand">BENSS<span class="dot">.</span></div>
+    <ul>
+      <li><a>About</a></li>
+      <li><a>Services</a></li>
+      <li><a>Case Studies</a></li>
+      <li><a>Accreditations</a></li>
+      <li><a>Insights</a></li>
+      <li><a>Contact</a></li>
+    </ul>
+    <div class="cta-row">
+      <span class="phone">03 8726 0466</span>
+      <a class="btn">Request an inspection</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="masthead">
+        <span><b>BENSS</b> — Built Environment Consultants</span>
+        <span>Melbourne · Est. 2015</span>
+      </div>
+      <div class="kicker">Report No. 128 — Hazardous Materials & Environmental Monitoring</div>
+      <h1>Independent inspection for the <em>hidden risks</em> in every building.</h1>
+      <p class="deck">Asbestos, lead, mould, PCBs, and airborne contaminants. Since 2015, BENSS Australia has documented and remediated life-safety hazards across Australian workplaces — from regional hospitals to ASX-listed manufacturing sites.</p>
+      <div class="cta-row">
+        <a class="btn-primary">Request an inspection →</a>
+        <div class="phone-cta"><b>Or call directly</b>03 8726 0466</div>
+      </div>
+    </div>
+    <div class="hero-figure">
+      <span class="cap">Illustrative</span>
+    </div>
+  </div>
+
+  <!-- ACCREDITATION STRIP -->
+  <div class="accred">
+    <div class="a"><div class="k">NATA Accreditation</div><div class="v">No. 15789</div></div>
+    <div class="a"><div class="k">Licensed Asbestos Assessor</div><div class="v">VIC-A24-0142</div></div>
+    <div class="a"><div class="k">ISO 14001</div><div class="v">Certified</div></div>
+    <div class="a"><div class="k">AIOH Member</div><div class="v">Since 2016</div></div>
+  </div>
+
+  <!-- PILLARS -->
+  <div class="pillars">
+    <div class="section-head">
+      <h2>Three disciplines. One accredited team.</h2>
+      <p>Every service delivered by licensed assessors, sampled to Australian Standards, and documented for regulator handover.</p>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar">
+        <div class="no">01 / Hazardous Materials</div>
+        <h3>Asbestos, lead, mould, PCBs</h3>
+        <p>Bulk sampling, air monitoring, clearance certificates, registers, management plans, and licensed assessor sign-off.</p>
+        <ul>
+          <li><span>Asbestos testing & inspections</span><span>→</span></li>
+          <li><span>Lead & lead paint surveys</span><span>→</span></li>
+          <li><span>Mould & damp assessments</span><span>→</span></li>
+          <li><span>Polychlorinated biphenyls (PCBs)</span><span>→</span></li>
+        </ul>
+        <a class="more">View hazmat services</a>
+      </div>
+      <div class="pillar">
+        <div class="no">02 / Environmental Monitoring</div>
+        <h3>Air, noise, thermal, contamination</h3>
+        <p>Occupational and environmental monitoring across occupied buildings, industrial sites, and construction interfaces.</p>
+        <ul>
+          <li><span>Workplace air monitoring</span><span>→</span></li>
+          <li><span>Noise & acoustics</span><span>→</span></li>
+          <li><span>Lighting audits</span><span>→</span></li>
+          <li><span>Thermal imaging & contaminated land</span><span>→</span></li>
+        </ul>
+        <a class="more">View monitoring services</a>
+      </div>
+      <div class="pillar">
+        <div class="no">03 / Sustainability</div>
+        <h3>From compliance to net-zero</h3>
+        <p>Energy audits, emissions reporting, waste stream analysis, and sustainability advisory grounded in operational reality.</p>
+        <ul>
+          <li><span>Energy & emissions</span><span>→</span></li>
+          <li><span>Waste & recycling audits</span><span>→</span></li>
+          <li><span>Thermal performance</span><span>→</span></li>
+          <li><span>Contaminated land & water</span><span>→</span></li>
+        </ul>
+        <a class="more">View sustainability services</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-row">
+      <div class="stat"><div class="n">1,400+</div><div class="k">Inspections completed</div></div>
+      <div class="stat"><div class="n">11</div><div class="k">Service disciplines</div></div>
+      <div class="stat"><div class="n">10 yrs</div><div class="k">Continuous NATA accreditation</div></div>
+      <div class="stat"><div class="n">100%</div><div class="k">Compliant clearance rate</div></div>
+    </div>
+  </div>
+
+  <!-- CASE STUDIES -->
+  <div class="cases">
+    <div class="section-head">
+      <h2>Selected case studies</h2>
+      <a class="see-all">All case studies →</a>
+    </div>
+    <div class="case-grid">
+      <div class="case">
+        <div class="cover"><span class="ref">CASE 004 · 2025</span><span class="cat">Hazmat</span></div>
+        <div class="body">
+          <h3>Full asbestos register for a 12,000 m² regional hospital</h3>
+          <p>Delivered in 18 working days across four occupied wards, zero patient displacement.</p>
+          <div class="foot">Victoria · Public Health · 18 days</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="cover" style="background:linear-gradient(135deg,#1F3C55 0%,#0A1A28 100%)"><span class="ref">CASE 007 · 2025</span><span class="cat" style="background:rgba(31,60,85,.85)">Monitoring</span></div>
+        <div class="body">
+          <h3>Air monitoring during heritage building demolition</h3>
+          <p>Real-time particulate & fibre monitoring across a 6-week partial demolition adjacent to a school precinct.</p>
+          <div class="foot">Melbourne CBD · Education · 6 weeks</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="cover" style="background:linear-gradient(135deg,#2C5236 0%,#0F2418 100%)"><span class="ref">CASE 011 · 2024</span><span class="cat" style="background:rgba(46,107,68,.85)">Sustainability</span></div>
+        <div class="body">
+          <h3>Emissions audit & reduction plan for a manufacturing group</h3>
+          <p>Baselined Scope 1 & 2 across four sites and delivered a phased reduction plan aligned with SBTi targets.</p>
+          <div class="foot">National · Manufacturing · 5 sites</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIAL -->
+  <div class="testimonial">
+    <div class="testimonial-inner">
+      <span class="lbl">▲ Client · Regional Public Hospital</span>
+      <blockquote>BENSS turned a six-month asbestos compliance nightmare into a documented plan we could hand to our regulator — without disrupting a single ward.</blockquote>
+      <cite><b>Facilities Manager</b> · Regional Public Hospital · Victoria</cite>
+    </div>
+  </div>
+
+  <!-- LOGO STRIP -->
+  <div class="logos">
+    <span class="lbl">Trusted by facility managers at</span>
+    <div class="logo-strip">
+      <span class="lg">Department of Education (VIC)</span>
+      <span class="lg">Melbourne Water</span>
+      <span class="lg">Multiplex</span>
+      <span class="lg">Lendlease</span>
+      <span class="lg">CBRE</span>
+      <span class="lg">Coles Group</span>
+      <span class="lg">Cbus Super</span>
+    </div>
+  </div>
+
+  <!-- INDUSTRIES -->
+  <div class="industries">
+    <h2>Industries we work across</h2>
+    <div class="ind-grid">
+      <div class="ind"><span class="no">i / 01</span><h4>Property & Facilities Management</h4><p>Corporate portfolios, REITs, universities.</p></div>
+      <div class="ind"><span class="no">i / 02</span><h4>Public Health & Government</h4><p>Hospitals, schools, defence sites.</p></div>
+      <div class="ind"><span class="no">i / 03</span><h4>Manufacturing</h4><p>Industrial facilities, food processing.</p></div>
+      <div class="ind"><span class="no">i / 04</span><h4>Retail</h4><p>National retail networks and centres.</p></div>
+      <div class="ind"><span class="no">i / 05</span><h4>Off-Shore & Maritime</h4><p>Ports, vessels, offshore infrastructure.</p></div>
+      <div class="ind"><span class="no">i / 06</span><h4>Mining & Resources</h4><p>Site assessments, worker exposure.</p></div>
+      <div class="ind"><span class="no">i / 07</span><h4>Telecommunications</h4><p>Exchanges, towers, network sheds.</p></div>
+      <div class="ind"><span class="no">i / 08</span><h4>Water, Sewage & Energy</h4><p>Utilities and network infrastructure.</p></div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="cta-final">
+    <h2>Have a building that needs a <em>second opinion?</em></h2>
+    <p>Whether you're planning demolition, buying a pre-1990 asset, or under a regulator letter — talk to a licensed assessor before the next step.</p>
+    <div class="row">
+      <a class="btn">Request an inspection →</a>
+      <div class="phone"><b>Or call directly</b>03 8726 0466</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-grid">
+      <div class="brand-blk">
+        <div class="b">BENSS<span class="dot">.</span></div>
+        <p>Independent hazardous materials, environmental monitoring, and sustainability consultants. NATA accredited since 2016.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a>Hazardous materials</a></li>
+          <li><a>Environmental monitoring</a></li>
+          <li><a>Sustainability</a></li>
+          <li><a>All services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a>About</a></li>
+          <li><a>Case studies</a></li>
+          <li><a>Accreditations</a></li>
+          <li><a>Insights</a></li>
+          <li><a>Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="contact">
+          BENSS Australia Pty Ltd<br>
+          [ Melbourne HQ address ]<br>
+          <br>
+          T · 03 8726 0466<br>
+          E · enquiry@benss.com.au
+        </div>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 BENSS Australia Pty Ltd · ABN 72 606 545 920</span>
+      <span>NATA No. 15789 · LAA VIC-A24-0142</span>
+      <span><a style="color:inherit">Privacy</a> · <a style="color:inherit">Terms</a></span>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:16px">Sections in order (top → bottom): Nav · Hero + illustrative image · Accreditation strip · 3 service pillars · 4-stat row · 3 case studies · Testimonial · Client logo strip · 8 industries grid · Final CTA · Footer.</p>
+
+<div style="max-width:1360px;margin:40px auto;padding:20px 60px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6C6355;border-top:1px solid #B9B0A0;">
+  <a href="./index.html" style="color:#B7261F;text-decoration:none;">← back to preview index</a>
+</div>
+</body>
+</html>

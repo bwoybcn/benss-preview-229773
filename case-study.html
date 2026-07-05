@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>BENSS · Case study preview</title>
+</head>
+<body style="margin:0;background:#F5F1EA;">
+<style>
+  :root{
+    --ink-900:#111014; --ink-700:#2b2a2f; --ink-500:#55545a; --ink-300:#8B8579;
+    --paper:#F5F1E8; --paper-2:#EDE8DA; --paper-3:#E4DECC;
+    --rule:#231F1B; --hazard:#B7261F; --slate:#5C6470; --moss:#4A5A3E;
+    --font-display:'Fraunces',Georgia,serif; --font-body:'Source Serif 4',Georgia,serif;
+    --font-ui:'Inter',system-ui,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-body);background:var(--paper);color:var(--ink-900);line-height:1.55;font-size:17px}
+  .container{max-width:1360px;margin:0 auto;padding:0 60px}
+
+  nav.top{display:flex;align-items:center;justify-content:space-between;padding:22px 60px;border-bottom:1px solid var(--rule)}
+  .brand{font-family:var(--font-display);font-weight:600;font-size:22px;letter-spacing:-.01em;display:flex;align-items:center;gap:6px}
+  .brand::after{content:'';width:6px;height:6px;background:var(--hazard);border-radius:50%;transform:translateY(-8px)}
+  .nav-links{display:flex;gap:28px;font-family:var(--font-ui);font-size:14px;font-weight:500}
+  .nav-links a{color:var(--ink-700);text-decoration:none}
+  .nav-links a.active{color:var(--hazard)}
+  .nav-right{display:flex;gap:20px;align-items:center;font-family:var(--font-mono);font-size:13px}
+  .btn-primary{background:var(--ink-900);color:var(--paper);padding:11px 18px;text-decoration:none;font-family:var(--font-ui);font-size:14px;font-weight:500;border:none}
+
+  .crumb{padding:16px 60px;font-family:var(--font-mono);font-size:12px;color:var(--ink-500);letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--paper-3)}
+  .crumb a{color:var(--ink-500);text-decoration:none}
+  .crumb .sep{margin:0 10px;color:var(--ink-300)}
+  .crumb .current{color:var(--ink-900)}
+
+  /* CASE HERO */
+  .case-hero{padding:80px 0 60px}
+  .case-kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--hazard);margin-bottom:24px;display:flex;gap:20px;align-items:center}
+  .case-kicker .sep{color:var(--ink-300)}
+  h1.case{font-family:var(--font-display);font-weight:400;font-size:76px;line-height:1.02;letter-spacing:-.025em;max-width:1200px;margin-bottom:48px}
+  h1.case em{font-style:italic;color:var(--hazard)}
+
+  .meta-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:60px}
+  .meta-cell{padding:22px 0;padding-right:24px}
+  .meta-cell .label{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-300);margin-bottom:8px}
+  .meta-cell .val{font-family:var(--font-display);font-size:22px;font-weight:500;line-height:1.15}
+
+  /* HERO IMAGE */
+  .hero-image{width:100%;height:520px;background:linear-gradient(135deg,#B7261F,#3d0e0c);position:relative;margin-bottom:20px;overflow:hidden}
+  .hero-image::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 2px,transparent 2px 24px)}
+  .hero-image .caption{position:absolute;bottom:20px;left:24px;font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.75);letter-spacing:.08em;background:rgba(0,0,0,.35);padding:6px 10px}
+  .hero-image .badge{position:absolute;top:20px;left:24px;font-family:var(--font-mono);font-size:11px;color:#fff;background:rgba(0,0,0,.45);padding:6px 10px;letter-spacing:.14em}
+
+  /* TWO COL */
+  .layout{display:grid;grid-template-columns:1fr 340px;gap:80px;padding:80px 0;border-top:1px solid var(--rule)}
+
+  /* SECTION */
+  .sec-head{margin-bottom:36px}
+  .sec-head .num{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--ink-300);text-transform:uppercase;margin-bottom:8px}
+  .sec-head h2{font-family:var(--font-display);font-weight:400;font-size:44px;line-height:1.1;letter-spacing:-.02em;max-width:820px}
+  .sec-head h2 em{font-style:italic;color:var(--hazard)}
+
+  .prose{max-width:760px;margin-bottom:80px}
+  .prose p{font-size:19px;line-height:1.65;color:var(--ink-700);margin-bottom:22px}
+  .prose p:first-of-type::first-line{font-family:var(--font-display);font-weight:500}
+  .prose .drop{float:left;font-family:var(--font-display);font-weight:400;font-size:78px;line-height:.9;padding:8px 12px 0 0;color:var(--hazard)}
+
+  /* SCOPE GRID */
+  .scope-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-bottom:80px;border-top:1px solid var(--rule)}
+  .scope-cell{padding:32px 24px 32px 0;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule)}
+  .scope-cell:nth-child(3n){border-right:none}
+  .scope-cell .num{font-family:var(--font-mono);font-size:11px;color:var(--hazard);letter-spacing:.14em;margin-bottom:14px}
+  .scope-cell h4{font-family:var(--font-display);font-weight:500;font-size:20px;line-height:1.2;margin-bottom:8px}
+  .scope-cell p{font-size:14px;color:var(--ink-700);line-height:1.55}
+
+  /* INLINE IMAGE */
+  .inline-image{width:100%;height:380px;background:linear-gradient(135deg,#5C6470,#2a2f36);margin-bottom:70px;position:relative}
+  .inline-image::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 2px,transparent 2px 32px)}
+  .inline-image .caption{position:absolute;bottom:20px;left:24px;font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.8);background:rgba(0,0,0,.4);padding:6px 10px;letter-spacing:.08em}
+
+  /* PULLQUOTE (methodology callout) */
+  .pull{border-left:3px solid var(--hazard);padding:8px 32px;margin:48px 0 60px;max-width:720px}
+  .pull p{font-family:var(--font-display);font-weight:400;font-size:30px;line-height:1.25;font-style:italic;color:var(--ink-900);margin-bottom:14px}
+  .pull .attr{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--ink-500)}
+
+  /* OUTCOMES */
+  .outcomes-head{margin-bottom:36px}
+  .outcomes{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:60px}
+  .out-cell{padding:36px 24px 36px 0;border-right:1px solid var(--rule)}
+  .out-cell:last-child{border-right:none}
+  .out-cell .val{font-family:var(--font-display);font-weight:400;font-size:56px;line-height:1;letter-spacing:-.02em;margin-bottom:12px}
+  .out-cell .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--ink-500);text-transform:uppercase;line-height:1.5}
+
+  /* TESTIMONIAL BAND */
+  .testimonial-band{background:var(--paper-2);padding:80px 0;margin:0 -60px 80px;padding-left:60px;padding-right:60px}
+  .testimonial-band blockquote{font-family:var(--font-display);font-weight:400;font-size:44px;line-height:1.2;letter-spacing:-.01em;max-width:900px;font-style:italic;margin-bottom:32px}
+  .testimonial-band blockquote::before{content:'“';display:block;font-size:120px;line-height:.5;color:var(--hazard);margin-bottom:16px}
+  .testimonial-band .cite{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--ink-500)}
+
+  /* DELIVERABLES CHECKLIST */
+  .checklist{list-style:none;margin-bottom:60px}
+  .checklist li{padding:18px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline}
+  .checklist li:last-child{border-bottom:1px solid var(--rule)}
+  .checklist li .n{font-family:var(--font-mono);font-size:11px;color:var(--hazard);letter-spacing:.12em}
+  .checklist li .t{font-family:var(--font-display);font-size:20px;font-weight:500;line-height:1.3}
+  .checklist li .t small{display:block;font-family:var(--font-body);font-weight:400;font-size:15px;color:var(--ink-700);margin-top:4px}
+
+  /* SIDEBAR */
+  aside.sticky{position:sticky;top:40px;align-self:start}
+  .sidecard{background:var(--ink-900);color:var(--paper);padding:32px 28px;margin-bottom:24px}
+  .sidecard .kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--hazard);margin-bottom:14px}
+  .sidecard h3{font-family:var(--font-display);font-weight:500;font-size:26px;line-height:1.15;margin-bottom:12px}
+  .sidecard p{font-size:14px;color:#d8d3c5;margin-bottom:22px;line-height:1.5}
+  .sidecard .btn{display:block;width:100%;background:var(--hazard);color:#fff;padding:14px;font-family:var(--font-ui);font-weight:600;font-size:14px;text-align:center;text-decoration:none}
+
+  .fact-block{background:var(--paper-2);padding:24px;margin-bottom:24px}
+  .fact-block h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-500);margin-bottom:16px}
+  .fact-block .row{padding:10px 0;border-bottom:1px solid var(--paper-3);display:flex;justify-content:space-between;font-family:var(--font-ui);font-size:14px}
+  .fact-block .row:last-child{border-bottom:none}
+  .fact-block .row .k{color:var(--ink-500)}
+  .fact-block .row .v{font-family:var(--font-mono);color:var(--ink-900)}
+
+  .related-list h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-500);margin-bottom:16px}
+  .related-list a{display:block;padding:14px 0;border-top:1px solid var(--paper-3);color:var(--ink-900);text-decoration:none;font-family:var(--font-ui);font-size:14px;font-weight:500}
+  .related-list a:last-child{border-bottom:1px solid var(--paper-3)}
+  .related-list a .ref{font-family:var(--font-mono);font-size:10px;color:var(--hazard);display:block;margin-bottom:4px;letter-spacing:.12em}
+
+  /* CTA & FOOTER */
+  .cta-band{background:var(--ink-900);color:var(--paper);padding:80px 0}
+  .cta-band .container{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center}
+  .cta-band h2{font-family:var(--font-display);font-weight:400;font-size:52px;line-height:1.05;max-width:720px}
+  .cta-band h2 em{font-style:italic;color:var(--hazard)}
+  .cta-band .btn-primary{background:var(--hazard);padding:16px 28px}
+  .cta-band .phone{font-family:var(--font-mono);color:var(--paper);font-size:14px;text-decoration:none}
+
+  footer{background:var(--ink-900);color:var(--paper);padding:60px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:50px}
+  .foot-brand{font-family:var(--font-display);font-size:20px;font-weight:500;margin-bottom:12px}
+  .foot-tag{font-family:var(--font-body);color:#a8a294;font-size:14px;line-height:1.5;max-width:340px}
+  .foot h5{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8B8579;margin-bottom:14px}
+  .foot a{display:block;color:var(--paper);text-decoration:none;font-family:var(--font-ui);font-size:14px;padding:5px 0}
+  .foot .contact{font-family:var(--font-mono);font-size:13px;color:#d8d3c5;line-height:1.6}
+  .legal{border-top:1px solid #232028;padding-top:24px;display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;color:#8B8579;letter-spacing:.06em}
+</style>
+
+<nav class="top">
+  <div class="brand">BENSS.</div>
+  <div class="nav-links">
+    <a>About</a>
+    <a>Services</a>
+    <a class="active">Case Studies</a>
+    <a>Accreditations</a>
+    <a>Insights</a>
+    <a>Contact</a>
+  </div>
+  <div class="nav-right">
+    <span>03 8726 0466</span>
+    <a class="btn-primary" href="#">Request an inspection</a>
+  </div>
+</nav>
+
+<div class="crumb">
+  <a>Case Studies</a><span class="sep">/</span>
+  <span class="current">CASE 004 · Regional public hospital re-audit</span>
+</div>
+
+<section class="case-hero">
+  <div class="container">
+    <div class="case-kicker">
+      <span>CASE 004</span><span class="sep">·</span>
+      <span>Public health</span><span class="sep">·</span>
+      <span>Regional Victoria</span><span class="sep">·</span>
+      <span>2024</span>
+    </div>
+    <h1 class="case">A hospital-wide asbestos re-audit ahead of the <em>new oncology wing.</em></h1>
+
+    <div class="meta-strip">
+      <div class="meta-cell"><div class="label">Site</div><div class="val">~12,000 m²</div></div>
+      <div class="meta-cell"><div class="label">Buildings</div><div class="val">4 blocks, 1965-2011</div></div>
+      <div class="meta-cell"><div class="label">Team</div><div class="val">7 assessors</div></div>
+      <div class="meta-cell"><div class="label">Duration</div><div class="val">6 weeks</div></div>
+    </div>
+
+    <div class="hero-image">
+      <div class="badge">Illustrative</div>
+      <div class="caption">nano-banana · illustrative render · consultant sampling ceiling panel in ward corridor</div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="layout">
+    <div class="main">
+
+      <div class="sec-head">
+        <div class="num">§ 01 — Context</div>
+        <h2>The register hadn't been touched in <em>eight years.</em></h2>
+      </div>
+
+      <div class="prose">
+        <p><span class="drop">A</span> regional Victorian public hospital planning a new oncology wing needed to demonstrate — to Department of Health, to the head contractor, and to the incoming clinical team — that the existing asbestos register reflected the actual state of every surface a builder or a patient might touch.</p>
+        <p>The most recent survey on file was from 2016. It had been produced by a removalist as part of a targeted works package, not as an independent audit. Large sections of the site — the boiler house, the older ward block, several service risers — carried "presumed asbestos" flags with no sampling behind them. The 2017 OHS Regulations register format wasn't in use. Photograph coverage was sparse.</p>
+        <p>The hospital's facilities manager engaged BENSS to re-audit every building, sample everything reasonably practicable, deliver a fresh compliant register, and remain retained through the build's clearance program.</p>
+      </div>
+
+      <div class="sec-head">
+        <div class="num">§ 02 — Scope</div>
+        <h2>What we surveyed.</h2>
+      </div>
+
+      <div class="scope-grid">
+        <div class="scope-cell"><div class="num">i / 01</div><h4>Ward block A</h4><p>1965 fabric. Full intrusive Division 6 pre-refurb.</p></div>
+        <div class="scope-cell"><div class="num">i / 02</div><h4>Ward block B</h4><p>1978 build with 1995 fitout. Non-destructive Division 5.</p></div>
+        <div class="scope-cell"><div class="num">i / 03</div><h4>Diagnostics wing</h4><p>2011 concrete-frame. Verification-only survey.</p></div>
+        <div class="scope-cell"><div class="num">i / 04</div><h4>Boiler house & plant</h4><p>Full intrusive. Lagging, gaskets, flue linings.</p></div>
+        <div class="scope-cell"><div class="num">i / 05</div><h4>Service risers</h4><p>All floors. Pipework, cable trays, seal materials.</p></div>
+        <div class="scope-cell"><div class="num">i / 06</div><h4>Underground services</h4><p>Duct-crawler inspection. Confirmed cementitious pit lining.</p></div>
+      </div>
+
+      <div class="sec-head">
+        <div class="num">§ 03 — Methodology</div>
+        <h2>Live-site sampling around a <em>running hospital.</em></h2>
+      </div>
+
+      <div class="prose">
+        <p>Sampling in an operating hospital is not sampling in an empty building. Windows for access were 90-minute night blocks, coordinated week-by-week with nursing unit managers, infection control, and the on-call biomedical engineer. Every disturbance was contained under negative pressure. Every room was reinstated cleared and re-cleaned before shift handover.</p>
+      </div>
+
+      <div class="pull">
+        <p>“No fibre count above 0.01 f/mL in any occupied area for the entire program.”</p>
+        <div class="attr">— Air monitoring summary, week 6</div>
+      </div>
+
+      <div class="inline-image">
+        <div class="caption">nano-banana · illustrative render · night-shift sampling under H-class HEPA extraction</div>
+      </div>
+
+      <div class="sec-head">
+        <div class="num">§ 04 — Outcomes</div>
+        <h2>What the audit produced.</h2>
+      </div>
+
+      <div class="outcomes">
+        <div class="out-cell"><div class="val">1,247</div><div class="label">Discrete materials<br>catalogued</div></div>
+        <div class="out-cell"><div class="val">312</div><div class="label">Bulk samples<br>NATA-analysed</div></div>
+        <div class="out-cell"><div class="val">0</div><div class="label">Fibre exceedances<br>during works</div></div>
+        <div class="out-cell"><div class="val">18</div><div class="label">Priority-1 removal<br>items flagged</div></div>
+      </div>
+
+    </div>
+
+    <aside class="sticky">
+      <div class="sidecard">
+        <div class="kicker">Similar project?</div>
+        <h3>Talk to the assessor who ran this job.</h3>
+        <p>Multi-building healthcare, education, or heritage sites — the same team, the same audit format.</p>
+        <a class="btn" href="#">Request an inspection</a>
+      </div>
+
+      <div class="fact-block">
+        <h4>Project facts</h4>
+        <div class="row"><span class="k">Sector</span><span class="v">Public health</span></div>
+        <div class="row"><span class="k">Region</span><span class="v">Regional VIC</span></div>
+        <div class="row"><span class="k">Year</span><span class="v">2024</span></div>
+        <div class="row"><span class="k">Site area</span><span class="v">12,000 m²</span></div>
+        <div class="row"><span class="k">Service line</span><span class="v">Hazmat</span></div>
+        <div class="row"><span class="k">Report ref.</span><span class="v">BR-0428/24</span></div>
+      </div>
+
+      <div class="related-list">
+        <h4>Related cases</h4>
+        <a><span class="ref">CASE 007</span>Heritage warehouse pre-demolition survey</a>
+        <a><span class="ref">CASE 011</span>Utility depot emissions audit</a>
+        <a><span class="ref">CASE 003</span>Multi-campus school lead-paint audit</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<section class="testimonial-band">
+  <div class="container">
+    <blockquote>Their report gave our board the confidence to approve the oncology wing tender on schedule — the register was the clearest we've had.</blockquote>
+    <div class="cite">Facilities Director · Regional public hospital · September 2024</div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="sec-head">
+    <div class="num">§ 05 — Deliverables</div>
+    <h2>What the client received.</h2>
+  </div>
+
+  <ul class="checklist">
+    <li><span class="n">DEL 01</span><span class="t">Hospital-wide asbestos register in OHS Regs 2017 format<small>Digital + PDF, room-mapped, risk-rated, condition-scored.</small></span></li>
+    <li><span class="n">DEL 02</span><span class="t">Hazardous materials audit report (218 pages)<small>Full methodology, findings, sample results, recommendations, prioritised schedule.</small></span></li>
+    <li><span class="n">DEL 03</span><span class="t">Priority-1 removal package scope-of-works<small>Ready-to-tender document handed to the head contractor for the removalist package.</small></span></li>
+    <li><span class="n">DEL 04</span><span class="t">Six weeks of air-monitoring records<small>Daily control monitoring, fibre counts, chain-of-custody, laboratory certifications.</small></span></li>
+    <li><span class="n">DEL 05</span><span class="t">Clearance certification for the oncology wing footprint<small>Signed by the Licensed Asbestos Assessor. Site handover-ready.</small></span></li>
+  </ul>
+</div>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Have a building that needs a <em>second opinion?</em></h2>
+    <div class="actions">
+      <a class="btn-primary" href="#">Request an inspection</a>
+      <a class="phone" href="#" style="display:block;margin-top:12px">or call 03 8726 0466</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">BENSS.</div>
+        <div class="foot-tag">Independent hazardous-materials and environmental-monitoring consultants. NATA-accredited. Melbourne-based. Working across Australia since 2015.</div>
+      </div>
+      <div class="foot">
+        <h5>Services</h5>
+        <a>Asbestos</a><a>Lead</a><a>Mould</a><a>PCBs</a><a>Air monitoring</a><a>Sustainability</a>
+      </div>
+      <div class="foot">
+        <h5>Company</h5>
+        <a>About</a><a>Case Studies</a><a>Accreditations</a><a>Careers</a><a>Insights</a>
+      </div>
+      <div class="foot">
+        <h5>Contact</h5>
+        <div class="contact">[ Melbourne HQ address ]<br>03 8726 0466<br>hello@benss.com.au</div>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 BENSS Pty Ltd · ABN 72 606 545 920</span>
+      <span>NATA 15789 · LAA VIC-A24-0142 · ISO 14001</span>
+    </div>
+  </div>
+</footer>
+
+<div style="max-width:1360px;margin:40px auto;padding:20px 60px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6C6355;border-top:1px solid #B9B0A0;">
+  <a href="./index.html" style="color:#B7261F;text-decoration:none;">← back to preview index</a>
+</div>
+</body>
+</html>

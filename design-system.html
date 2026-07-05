@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>BENSS · Design system</title>
+</head>
+<body style="margin:0;background:#F5F1EA;">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fraunces:400,500|source-serif-4:400,600|inter:400,500,600|ibm-plex-mono:400,500&display=swap">
+
+<style>
+  :root {
+    --ink-900:#17140F; --ink-700:#3A342A; --ink-500:#6C6355; --ink-300:#B9B0A0;
+    --paper:#F5F1EA; --paper-2:#EFE9DD; --card:#FFFFFF;
+    --hazard:#B7261F; --hazard-tint:#FCE9E8;
+    --link:#7A0000; --success:#2E6B44;
+    --f-display:'Fraunces',ui-serif,Georgia,serif;
+    --f-body:'Source Serif 4','Iowan Old Style',Georgia,serif;
+    --f-ui:'Inter',system-ui,sans-serif;
+    --f-mono:'IBM Plex Mono',Consolas,monospace;
+  }
+  .ds-frame { background:var(--paper); color:var(--ink-900); font-family:var(--f-body); padding:32px; border-radius:16px; margin:16px 0; }
+  .ds-frame h2, .ds-frame h3 { font-family:var(--f-display); font-weight:400; letter-spacing:-.01em; margin:0 0 12px; color:var(--ink-900); }
+  .ds-frame h3 { font-size:22px; }
+  .ds-frame p { color:var(--ink-700); line-height:1.6; }
+  .ds-label { font-family:var(--f-ui); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-500); margin-bottom:14px; display:block; }
+  .ds-rule { border-top:1px solid var(--ink-300); margin:24px 0; }
+
+  /* palette swatches */
+  .palette { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:10px; }
+  .sw { border-radius:10px; overflow:hidden; border:1px solid rgba(0,0,0,.08); background:#fff; }
+  .sw .chip { height:64px; }
+  .sw .meta { padding:8px 10px; font-family:var(--f-mono); font-size:11px; color:var(--ink-700); }
+  .sw .meta b { display:block; font-family:var(--f-ui); font-weight:600; color:var(--ink-900); text-transform:capitalize; letter-spacing:.02em; margin-bottom:2px; font-size:12px; }
+
+  /* type specimens */
+  .type-row { padding:14px 0; border-bottom:1px dashed var(--ink-300); }
+  .type-row:last-child { border-bottom:none; }
+  .type-row .spec { font-family:var(--f-mono); font-size:11px; color:var(--ink-500); text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px; }
+  .display-xl { font-family:var(--f-display); font-size:clamp(38px,5.6vw,64px); font-weight:400; line-height:1.02; letter-spacing:-.02em; color:var(--ink-900); }
+  .display-xl em { font-style:italic; color:var(--hazard); }
+  .display-l { font-family:var(--f-display); font-size:clamp(28px,4vw,44px); font-weight:400; line-height:1.05; letter-spacing:-.015em; }
+  .h2 { font-family:var(--f-display); font-size:28px; font-weight:500; letter-spacing:-.01em; }
+  .h3 { font-family:var(--f-display); font-size:20px; font-weight:500; }
+  .body-l { font-family:var(--f-body); font-size:19px; line-height:1.55; color:var(--ink-700); }
+  .body { font-family:var(--f-body); font-size:17px; line-height:1.65; color:var(--ink-700); }
+  .caption { font-family:var(--f-ui); font-size:13px; color:var(--ink-500); }
+  .lbl { font-family:var(--f-ui); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-500); }
+  .mono { font-family:var(--f-mono); font-size:14px; color:var(--ink-700); font-feature-settings:'tnum'; }
+
+  /* buttons */
+  .btn { display:inline-flex; align-items:center; gap:10px; padding:12px 18px; font-family:var(--f-ui); font-size:14px; font-weight:500; border-radius:2px; text-decoration:none; border:1px solid transparent; cursor:pointer; }
+  .btn-primary { background:var(--ink-900); color:var(--paper); }
+  .btn-primary:hover { background:var(--hazard); }
+  .btn-secondary { background:transparent; color:var(--ink-900); border-color:var(--ink-900); }
+  .btn-secondary:hover { background:var(--ink-900); color:var(--paper); }
+  .btn-text { color:var(--link); background:transparent; padding:12px 0; text-decoration:underline; text-underline-offset:4px; }
+  .btn-text::after { content:'→'; margin-left:8px; }
+
+  /* chips */
+  .chip-tag { display:inline-block; padding:5px 10px; font-family:var(--f-ui); font-size:11px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; border-radius:2px; margin:2px 4px 2px 0; }
+  .chip-hazmat { background:var(--hazard-tint); color:var(--hazard); }
+  .chip-monitoring { background:#E9EEF3; color:#1F3C55; }
+  .chip-sustain { background:#E8F1EA; color:var(--success); }
+  .chip-outline { background:transparent; color:var(--ink-700); border:1px solid var(--ink-300); }
+
+  /* hazard callout */
+  .hazard-box { border-left:4px solid var(--hazard); background:var(--hazard-tint); padding:16px 18px; margin:14px 0; border-radius:2px; display:flex; gap:14px; }
+  .hazard-box .icon { flex:0 0 auto; width:24px; height:24px; border-radius:50%; background:var(--hazard); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--f-ui); font-weight:700; font-size:14px; }
+  .hazard-box .lbl { color:var(--hazard); margin-bottom:4px; font-weight:600; }
+  .hazard-box .body { color:var(--ink-900); font-size:15px; }
+
+  /* accreditation strip */
+  .accred-strip { display:flex; gap:0; flex-wrap:wrap; background:var(--card); border:1px solid var(--ink-300); border-radius:2px; overflow:hidden; }
+  .accred-strip .ac { padding:14px 18px; border-right:1px solid var(--ink-300); flex:1; min-width:160px; }
+  .accred-strip .ac:last-child { border-right:none; }
+  .accred-strip .ac .k { font-family:var(--f-ui); font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--ink-500); }
+  .accred-strip .ac .v { font-family:var(--f-mono); font-size:14px; color:var(--ink-900); margin-top:4px; }
+
+  /* statistic readout */
+  .stat-row { display:flex; gap:32px; flex-wrap:wrap; padding:20px 0; border-top:1px solid var(--ink-900); border-bottom:1px solid var(--ink-900); }
+  .stat .n { font-family:var(--f-mono); font-size:32px; font-weight:500; color:var(--ink-900); font-feature-settings:'tnum'; line-height:1; }
+  .stat .k { font-family:var(--f-ui); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-500); margin-top:6px; }
+
+  /* testimonial */
+  .quote { border-left:2px solid var(--ink-900); padding:6px 0 6px 20px; font-family:var(--f-display); font-style:italic; font-size:22px; line-height:1.35; color:var(--ink-900); }
+  .quote-attr { font-family:var(--f-ui); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-500); margin-top:12px; padding-left:22px; }
+
+  /* case study card */
+  .case-card { background:var(--card); border:1px solid var(--ink-300); border-radius:2px; overflow:hidden; }
+  .case-card .cover { height:140px; background:linear-gradient(135deg,#4A3D2E 0%,#17140F 100%); position:relative; }
+  .case-card .cover::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px); background-size:16px 16px; }
+  .case-card .cover .ref { position:absolute; top:12px; left:14px; font-family:var(--f-mono); font-size:11px; color:rgba(255,255,255,.6); letter-spacing:.1em; }
+  .case-card .body { padding:16px 18px 18px; }
+  .case-card .kicker { font-family:var(--f-ui); font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--hazard); margin-bottom:8px; }
+  .case-card h4 { font-family:var(--f-display); font-size:20px; margin:0 0 8px; font-weight:400; }
+  .case-card p { font-size:14px; margin:0; color:var(--ink-500); }
+
+  /* footnote marker */
+  sup.fn { font-family:var(--f-mono); font-size:.75em; color:var(--hazard); padding:0 2px; cursor:pointer; }
+
+  .grid-2 { display:grid; grid-template-columns:1fr; gap:20px; }
+  @media (min-width:820px) { .grid-2 { grid-template-columns:1fr 1fr; } }
+</style>
+
+<h2>Design system — editorial + hazard-signal</h2>
+<p class="subtitle">Scroll through. Nothing to click; just look for anything that feels off.</p>
+
+<!-- Palette -->
+<div class="ds-frame">
+  <span class="ds-label">Palette</span>
+  <h3>Ink, paper, hazard</h3>
+  <p style="margin-bottom:20px">Warm ink on warm paper. Hazard red is the <em>only</em> chromatic accent, used sparingly for regulatory callouts, hazard classifications, and primary CTAs on hover.</p>
+
+  <div class="palette">
+    <div class="sw"><div class="chip" style="background:#17140F"></div><div class="meta"><b>ink-900</b>#17140F · AA on paper</div></div>
+    <div class="sw"><div class="chip" style="background:#3A342A"></div><div class="meta"><b>ink-700</b>#3A342A · body</div></div>
+    <div class="sw"><div class="chip" style="background:#6C6355"></div><div class="meta"><b>ink-500</b>#6C6355 · caption</div></div>
+    <div class="sw"><div class="chip" style="background:#B9B0A0"></div><div class="meta"><b>ink-300</b>#B9B0A0 · divider</div></div>
+    <div class="sw"><div class="chip" style="background:#F5F1EA;border:1px solid #eee"></div><div class="meta"><b>paper</b>#F5F1EA · bg</div></div>
+    <div class="sw"><div class="chip" style="background:#EFE9DD"></div><div class="meta"><b>paper-2</b>#EFE9DD · alt bg</div></div>
+    <div class="sw"><div class="chip" style="background:#B7261F"></div><div class="meta"><b>hazard</b>#B7261F · AA 5.8:1</div></div>
+    <div class="sw"><div class="chip" style="background:#FCE9E8"></div><div class="meta"><b>hazard-tint</b>#FCE9E8</div></div>
+    <div class="sw"><div class="chip" style="background:#7A0000"></div><div class="meta"><b>link</b>#7A0000</div></div>
+    <div class="sw"><div class="chip" style="background:#2E6B44"></div><div class="meta"><b>success</b>#2E6B44 · "cleared"</div></div>
+  </div>
+</div>
+
+<!-- Type -->
+<div class="ds-frame">
+  <span class="ds-label">Type</span>
+  <h3>Four faces, one voice</h3>
+  <p style="margin-bottom:20px"><b>Fraunces</b> (display serif, variable) for headlines and pullquotes. <b>Source Serif 4</b> for editorial body. <b>Inter</b> for UI, chips, nav, form labels. <b>IBM Plex Mono</b> for numerics, license numbers, and footnote refs — everything that quantifies.</p>
+
+  <div class="type-row">
+    <div class="spec">display-xl · Fraunces 400 · clamp(38,5.6vw,64)</div>
+    <div class="display-xl">Independent inspection for the <em>hidden risks</em> in every building.</div>
+  </div>
+  <div class="type-row">
+    <div class="spec">display-l · Fraunces 400 · clamp(28,4vw,44)</div>
+    <div class="display-l">Asbestos Testing & Inspections</div>
+  </div>
+  <div class="type-row">
+    <div class="spec">h2 · Fraunces 500 · 28</div>
+    <div class="h2">Our approach to sampling and analysis</div>
+  </div>
+  <div class="type-row">
+    <div class="spec">h3 · Fraunces 500 · 20</div>
+    <div class="h3">Regulatory context in Victoria</div>
+  </div>
+  <div class="type-row">
+    <div class="spec">body-l (deck) · Source Serif 4 · 19</div>
+    <div class="body-l">Since 2015, BENSS has documented and remediated life-safety hazards across Australian workplaces, from regional hospitals to ASX-listed manufacturing sites.</div>
+  </div>
+  <div class="type-row">
+    <div class="spec">body · Source Serif 4 · 17 / 1.65</div>
+    <div class="body">Asbestos-containing materials (ACMs) are present in nearly every commercial building constructed before 1990.<sup class="fn">1</sup> Our licensed assessors perform NATA-accredited bulk sampling, air monitoring, and clearance inspections in accordance with AS/NZS 4964:2004 and the Victorian OHS Regulations.</div>
+  </div>
+  <div class="type-row">
+    <div class="spec">caption · Inter 400 · 13</div>
+    <div class="caption">Photo: illustrative. Actual PPE varies by site.</div>
+  </div>
+  <div class="type-row">
+    <div class="spec">label · Inter 500 · 11 · .16em tracked · uppercase</div>
+    <div class="lbl">▲ Report No. 128 — Hazardous Materials</div>
+  </div>
+  <div class="type-row">
+    <div class="spec">mono · IBM Plex Mono · 14 · tabular-nums</div>
+    <div class="mono">NATA Accreditation No. 15789 · LAA VIC-A24-0142 · ABN 72 606 545 920</div>
+  </div>
+</div>
+
+<!-- Components -->
+<div class="ds-frame">
+  <span class="ds-label">Components</span>
+  <h3>Buttons, chips, callouts</h3>
+
+  <div class="grid-2" style="margin-top:20px">
+    <div>
+      <div class="lbl" style="margin-bottom:12px">Buttons</div>
+      <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center">
+        <a class="btn btn-primary">Request an inspection</a>
+        <a class="btn btn-secondary">Read the process</a>
+        <a class="btn btn-text">View case studies</a>
+      </div>
+
+      <div class="lbl" style="margin:24px 0 12px">Category chips</div>
+      <div>
+        <span class="chip-tag chip-hazmat">Hazardous Materials</span>
+        <span class="chip-tag chip-monitoring">Environmental Monitoring</span>
+        <span class="chip-tag chip-sustain">Sustainability</span>
+        <span class="chip-tag chip-outline">Regulatory</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="lbl" style="margin-bottom:12px">Hazard callout</div>
+      <div class="hazard-box">
+        <div class="icon">!</div>
+        <div>
+          <div class="lbl">Regulatory alert · Vic OHS Regs 2017</div>
+          <div class="body">Persons managing workplaces must ensure an asbestos register is prepared for all buildings constructed before 31 December 2003.</div>
+        </div>
+      </div>
+
+      <div class="lbl" style="margin:16px 0 12px">Footnote marker</div>
+      <div class="body">Sampling followed AS/NZS 4964:2004<sup class="fn">1</sup> and internal QA protocol REV-08.<sup class="fn">2</sup></div>
+    </div>
+  </div>
+
+  <div class="ds-rule"></div>
+
+  <div class="lbl" style="margin-bottom:12px">Accreditation strip · (used in footer + on service pages)</div>
+  <div class="accred-strip">
+    <div class="ac"><div class="k">NATA Accreditation</div><div class="v">No. 15789</div></div>
+    <div class="ac"><div class="k">Licensed Asbestos Assessor</div><div class="v">VIC-A24-0142</div></div>
+    <div class="ac"><div class="k">ISO 14001</div><div class="v">Certified</div></div>
+    <div class="ac"><div class="k">AIOH Member</div><div class="v">Since 2016</div></div>
+  </div>
+
+  <div class="ds-rule"></div>
+
+  <div class="lbl" style="margin-bottom:12px">Statistic readout · (About page + case-study index)</div>
+  <div class="stat-row">
+    <div class="stat"><div class="n">1,400+</div><div class="k">Inspections completed</div></div>
+    <div class="stat"><div class="n">11</div><div class="k">Service disciplines</div></div>
+    <div class="stat"><div class="n">10 yrs</div><div class="k">Continuous NATA accreditation</div></div>
+    <div class="stat"><div class="n">100%</div><div class="k">Compliant clearance rate</div></div>
+  </div>
+
+  <div class="ds-rule"></div>
+
+  <div class="grid-2">
+    <div>
+      <div class="lbl" style="margin-bottom:12px">Testimonial · pullquote</div>
+      <div class="quote">BENSS turned a six-month asbestos compliance nightmare into a documented plan we could hand to our regulator.</div>
+      <div class="quote-attr">Facilities Manager · Regional Public Hospital · Victoria</div>
+    </div>
+    <div>
+      <div class="lbl" style="margin-bottom:12px">Case study card</div>
+      <div class="case-card">
+        <div class="cover"><span class="ref">CASE 004 · 2025</span></div>
+        <div class="body">
+          <div class="kicker">Hazmat · Compliance</div>
+          <h4>Full asbestos register for a 12,000 m² regional hospital</h4>
+          <p>Delivered in 18 working days across four occupied wards, zero patient displacement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:20px">Look for: colour temperature, type hierarchy, hazard-red usage. Next beat is the full homepage anatomy in this system.</p>
+
+<div style="max-width:1360px;margin:40px auto;padding:20px 60px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6C6355;border-top:1px solid #B9B0A0;">
+  <a href="./index.html" style="color:#B7261F;text-decoration:none;">← back to preview index</a>
+</div>
+</body>
+</html>

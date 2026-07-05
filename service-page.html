@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>BENSS · Service page preview</title>
+</head>
+<body style="margin:0;background:#F5F1EA;">
+<style>
+  :root{
+    --ink-900:#111014; --ink-700:#2b2a2f; --ink-500:#55545a; --ink-300:#8B8579;
+    --paper:#F5F1E8; --paper-2:#EDE8DA; --paper-3:#E4DECC;
+    --rule:#231F1B; --hazard:#B7261F; --slate:#5C6470; --moss:#4A5A3E;
+    --font-display:'Fraunces',Georgia,serif; --font-body:'Source Serif 4',Georgia,serif;
+    --font-ui:'Inter',system-ui,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-body);background:var(--paper);color:var(--ink-900);line-height:1.55;font-size:17px}
+  .container{max-width:1360px;margin:0 auto;padding:0 60px}
+
+  /* NAV */
+  nav.top{display:flex;align-items:center;justify-content:space-between;padding:22px 60px;border-bottom:1px solid var(--rule)}
+  .brand{font-family:var(--font-display);font-weight:600;font-size:22px;letter-spacing:-.01em;display:flex;align-items:center;gap:6px}
+  .brand::after{content:'';width:6px;height:6px;background:var(--hazard);border-radius:50%;transform:translateY(-8px)}
+  .nav-links{display:flex;gap:28px;font-family:var(--font-ui);font-size:14px;font-weight:500}
+  .nav-links a{color:var(--ink-700);text-decoration:none;position:relative}
+  .nav-links a.active{color:var(--hazard)}
+  .nav-right{display:flex;gap:20px;align-items:center;font-family:var(--font-mono);font-size:13px}
+  .btn-primary{background:var(--ink-900);color:var(--paper);padding:11px 18px;text-decoration:none;font-family:var(--font-ui);font-size:14px;font-weight:500;border:none}
+
+  /* BREADCRUMB */
+  .crumb{padding:16px 60px;font-family:var(--font-mono);font-size:12px;color:var(--ink-500);letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--paper-3)}
+  .crumb a{color:var(--ink-500);text-decoration:none}
+  .crumb .sep{margin:0 10px;color:var(--ink-300)}
+  .crumb .current{color:var(--ink-900)}
+
+  /* HERO */
+  .service-hero{padding:80px 0 60px;border-bottom:1px solid var(--rule)}
+  .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--hazard);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+  .kicker .dot{width:6px;height:6px;background:var(--hazard);border-radius:50%}
+  h1.service{font-family:var(--font-display);font-weight:400;font-size:76px;line-height:1.02;letter-spacing:-.025em;max-width:1100px;margin-bottom:32px}
+  h1.service em{font-style:italic;color:var(--hazard);font-weight:400}
+  .service-deck{font-family:var(--font-body);font-size:22px;line-height:1.5;max-width:720px;color:var(--ink-700);margin-bottom:44px}
+  .hero-actions{display:flex;gap:24px;align-items:center}
+  .hero-actions .phone{font-family:var(--font-mono);font-size:14px;color:var(--ink-700);text-decoration:none;border-bottom:1px dotted var(--ink-500);padding-bottom:2px}
+
+  /* TWO COL LAYOUT */
+  .layout{display:grid;grid-template-columns:1fr 340px;gap:80px;padding:80px 0;border-bottom:1px solid var(--rule)}
+  .main{min-width:0}
+  aside.sticky{position:sticky;top:40px;align-self:start}
+
+  /* REG CALLOUT */
+  .reg-callout{background:var(--paper-2);border-left:3px solid var(--hazard);padding:28px 32px;margin-bottom:60px;font-family:var(--font-ui);font-size:14px}
+  .reg-callout .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--hazard);margin-bottom:12px}
+  .reg-callout h3{font-family:var(--font-display);font-weight:500;font-size:22px;margin-bottom:14px;line-height:1.25}
+  .reg-callout ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;color:var(--ink-700)}
+  .reg-callout li::before{content:'§ ';color:var(--hazard);font-family:var(--font-mono);margin-right:4px}
+
+  /* SECTION HEADING */
+  .sec-head{margin-bottom:36px}
+  .sec-head .num{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--ink-300);text-transform:uppercase;margin-bottom:8px}
+  .sec-head h2{font-family:var(--font-display);font-weight:400;font-size:44px;line-height:1.1;letter-spacing:-.02em;max-width:720px}
+  .sec-head h2 em{font-style:italic;color:var(--hazard)}
+
+  /* PROCESS STEPS */
+  .steps{display:flex;flex-direction:column;gap:0;margin-bottom:80px}
+  .step{display:grid;grid-template-columns:64px 200px 1fr;gap:32px;padding:32px 0;border-top:1px solid var(--rule);align-items:start}
+  .step:last-child{border-bottom:1px solid var(--rule)}
+  .step-num{font-family:var(--font-mono);font-size:13px;color:var(--ink-300);letter-spacing:.1em}
+  .step-title{font-family:var(--font-display);font-weight:500;font-size:24px;line-height:1.15}
+  .step-body{font-size:16px;color:var(--ink-700);line-height:1.6}
+
+  /* DELIVERABLES */
+  .deliverables{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-bottom:80px;border-top:1px solid var(--rule)}
+  .del{padding:28px 24px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule)}
+  .del:nth-child(2n){border-right:none}
+  .del .icon-mono{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--hazard);text-transform:uppercase;margin-bottom:12px}
+  .del h4{font-family:var(--font-display);font-weight:500;font-size:22px;line-height:1.2;margin-bottom:10px}
+  .del p{font-size:15px;color:var(--ink-700);line-height:1.55}
+
+  /* RELATED CASES */
+  .related-cases{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:80px}
+  .case{background:#fff;border:1px solid var(--rule);overflow:hidden;position:relative}
+  .case-cover{height:180px;background:linear-gradient(135deg,#B7261F,#7a1815);position:relative}
+  .case-cover.slate{background:linear-gradient(135deg,#5C6470,#3a404a)}
+  .case-cover .ref{position:absolute;top:16px;left:16px;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:#fff;background:rgba(0,0,0,.35);padding:4px 8px}
+  .case-cover .cat{position:absolute;top:16px;right:16px;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:#fff;background:rgba(255,255,255,.15);padding:4px 8px;text-transform:uppercase}
+  .case-body{padding:24px}
+  .case-body h4{font-family:var(--font-display);font-weight:500;font-size:22px;line-height:1.2;margin-bottom:12px}
+  .case-body .meta{font-family:var(--font-mono);font-size:11px;color:var(--ink-500);letter-spacing:.08em;display:flex;gap:14px}
+
+  /* FAQ */
+  .faq{margin-bottom:20px}
+  .faq-item{border-top:1px solid var(--rule);padding:24px 0}
+  .faq-item:last-child{border-bottom:1px solid var(--rule)}
+  .faq-q{font-family:var(--font-display);font-weight:500;font-size:22px;line-height:1.3;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+  .faq-q .plus{font-family:var(--font-mono);font-size:22px;color:var(--hazard);font-weight:300}
+  .faq-a{margin-top:14px;color:var(--ink-700);font-size:16px;line-height:1.6;max-width:820px}
+
+  /* SIDEBAR CARD */
+  .sidecard{background:var(--ink-900);color:var(--paper);padding:32px 28px;margin-bottom:24px}
+  .sidecard .kicker{color:var(--hazard);margin-bottom:16px}
+  .sidecard h3{font-family:var(--font-display);font-weight:500;font-size:26px;line-height:1.15;margin-bottom:12px}
+  .sidecard p{font-size:14px;color:#d8d3c5;margin-bottom:22px;line-height:1.5}
+  .sidecard .field{margin-bottom:14px}
+  .sidecard label{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a8a294;display:block;margin-bottom:6px}
+  .sidecard input,.sidecard select,.sidecard textarea{width:100%;background:#1e1c22;border:1px solid #3a373f;color:var(--paper);padding:10px 12px;font-family:var(--font-ui);font-size:14px}
+  .sidecard button{width:100%;background:var(--hazard);color:#fff;padding:14px;font-family:var(--font-ui);font-weight:600;font-size:14px;border:none;margin-top:8px;letter-spacing:.02em}
+
+  .related-services{background:var(--paper-2);padding:24px}
+  .related-services h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-500);margin-bottom:16px}
+  .related-services a{display:block;padding:12px 0;border-bottom:1px solid var(--paper-3);color:var(--ink-900);text-decoration:none;font-family:var(--font-ui);font-size:15px;font-weight:500}
+  .related-services a:last-child{border-bottom:none}
+  .related-services a::after{content:'→';float:right;color:var(--ink-300)}
+
+  /* CTA BAND */
+  .cta-band{background:var(--ink-900);color:var(--paper);padding:80px 0}
+  .cta-band .container{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center}
+  .cta-band h2{font-family:var(--font-display);font-weight:400;font-size:52px;line-height:1.05;letter-spacing:-.02em;max-width:720px}
+  .cta-band h2 em{font-style:italic;color:var(--hazard)}
+  .cta-band .actions{display:flex;flex-direction:column;gap:16px}
+  .cta-band .btn-primary{background:var(--hazard);padding:16px 28px}
+  .cta-band .phone{font-family:var(--font-mono);color:var(--paper);font-size:14px;text-decoration:none;text-align:center}
+
+  /* FOOTER */
+  footer{background:var(--ink-900);color:var(--paper);padding:60px 0 30px;border-top:1px solid #232028}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:50px}
+  .foot-brand{font-family:var(--font-display);font-size:20px;font-weight:500;margin-bottom:12px}
+  .foot-tag{font-family:var(--font-body);color:#a8a294;font-size:14px;line-height:1.5;max-width:340px}
+  .foot h5{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8B8579;margin-bottom:14px}
+  .foot a{display:block;color:var(--paper);text-decoration:none;font-family:var(--font-ui);font-size:14px;padding:5px 0}
+  .foot .contact{font-family:var(--font-mono);font-size:13px;color:#d8d3c5;line-height:1.6}
+  .legal{border-top:1px solid #232028;padding-top:24px;display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;color:#8B8579;letter-spacing:.06em}
+</style>
+
+<nav class="top">
+  <div class="brand">BENSS.</div>
+  <div class="nav-links">
+    <a>About</a>
+    <a class="active">Services</a>
+    <a>Case Studies</a>
+    <a>Accreditations</a>
+    <a>Insights</a>
+    <a>Contact</a>
+  </div>
+  <div class="nav-right">
+    <span>03 8726 0466</span>
+    <a class="btn-primary" href="#">Request an inspection</a>
+  </div>
+</nav>
+
+<div class="crumb">
+  <a>Services</a><span class="sep">/</span>
+  <a>Hazardous Materials</a><span class="sep">/</span>
+  <span class="current">Asbestos Testing & Inspections</span>
+</div>
+
+<section class="service-hero">
+  <div class="container">
+    <div class="kicker"><span class="dot"></span>Service 04 · Hazardous Materials · Under WHS Regulations 2017</div>
+    <h1 class="service">Asbestos testing that stands up to <em>audit, litigation,</em> and site handover.</h1>
+    <p class="service-deck">Independent inspection, sampling, and NATA-accredited laboratory analysis of asbestos-containing materials — for facility managers, principal contractors, and building owners who need a defensible register, not a form-filled checkbox.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#">Book an inspection</a>
+      <a class="phone" href="#">or call 03 8726 0466</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="layout">
+    <div class="main">
+
+      <div class="reg-callout">
+        <div class="label">Regulatory framework</div>
+        <h3>Every asbestos survey we deliver aligns to the current Victorian regulatory stack.</h3>
+        <ul>
+          <li>OHS Regulations 2017 (Vic) — Part 4.4</li>
+          <li>Compliance Code: Managing Asbestos (WorkSafe Vic)</li>
+          <li>NOHSC:2018 Code of Practice</li>
+          <li>AS 4964:2004 sample identification</li>
+          <li>Licensed Asbestos Assessor VIC-A24-0142</li>
+          <li>NATA-accredited laboratory No. 15789</li>
+        </ul>
+      </div>
+
+      <div class="sec-head">
+        <div class="num">§ 01 — Process</div>
+        <h2>Five stages, one <em>defensible</em> outcome.</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-title">Brief & scope</div>
+          <div class="step-body">Site walkthrough with the facility owner or PC. We identify buildings, ages, previous reports, occupation windows, and known refurbishment plans. Written scope back within 48 hours.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-title">On-site survey</div>
+          <div class="step-body">Licensed Asbestos Assessor on site. Room-by-room inventory. Non-destructive Division 5 or intrusive Division 6 depending on scope. Photograph, geo-tag, and physically flag each suspect material.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-title">NATA lab analysis</div>
+          <div class="step-body">Samples chain-of-custody to our accredited lab. Polarised Light Microscopy per AS 4964:2004. Turnaround 3-5 business days standard; 24-hour available.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-title">Report & register</div>
+          <div class="step-body">Full audit report + asbestos register in the exact format WorkSafe inspectors expect. Risk-rated (low/med/high), condition-scored, removal-prioritised. Digital register handover.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-title">Air monitoring & clearance</div>
+          <div class="step-body">If removal follows: control monitoring during works, clearance inspection, clearance certificate. Sign-off you can hand to the incoming tenant, the builder, or the sale contract.</div>
+        </div>
+      </div>
+
+      <div class="sec-head">
+        <div class="num">§ 02 — Deliverables</div>
+        <h2>What you actually <em>receive</em>.</h2>
+      </div>
+
+      <div class="deliverables">
+        <div class="del">
+          <div class="icon-mono">DEL 01</div>
+          <h4>Asbestos register (digital + PDF)</h4>
+          <p>Location-mapped, risk-rated, photographed. Compliant with OHS Regs 2017 Part 4.4 register requirements.</p>
+        </div>
+        <div class="del">
+          <div class="icon-mono">DEL 02</div>
+          <h4>Hazardous materials audit report</h4>
+          <p>Full narrative: methodology, findings, sample results, recommendations, prioritised removal schedule.</p>
+        </div>
+        <div class="del">
+          <div class="icon-mono">DEL 03</div>
+          <h4>Air monitoring records</h4>
+          <p>Control monitoring per NOHSC:3003. Fibre counts, sample maps, calibration logs, laboratory certifications.</p>
+        </div>
+        <div class="del">
+          <div class="icon-mono">DEL 04</div>
+          <h4>Clearance certificate</h4>
+          <p>Post-removal clearance inspection and certificate — the document that lets your site re-occupy.</p>
+        </div>
+      </div>
+
+      <div class="sec-head">
+        <div class="num">§ 03 — In the field</div>
+        <h2>Case studies that used this <em>service line</em>.</h2>
+      </div>
+
+      <div class="related-cases">
+        <div class="case">
+          <div class="case-cover">
+            <div class="ref">CASE 004</div>
+            <div class="cat">Public health</div>
+          </div>
+          <div class="case-body">
+            <h4>Regional hospital-wide asbestos re-audit ahead of oncology wing expansion.</h4>
+            <div class="meta"><span>~12,000 m²</span><span>7 disciplines</span><span>2024</span></div>
+          </div>
+        </div>
+        <div class="case">
+          <div class="case-cover slate">
+            <div class="ref">CASE 007</div>
+            <div class="cat">Heritage / demolition</div>
+          </div>
+          <div class="case-body">
+            <h4>Pre-demolition survey of 1930s inner-city warehouse before mixed-use redevelopment.</h4>
+            <div class="meta"><span>1930s fabric</span><span>Demolition licence</span><span>2023</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-head">
+        <div class="num">§ 04 — Common questions</div>
+        <h2>What facility managers <em>ask us</em> first.</h2>
+      </div>
+
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-q">How is your report different from the one I got five years ago? <span class="plus">+</span></div>
+          <div class="faq-a">Most legacy registers list "presumed asbestos" without sampling and don't align to the 2017 OHS Regs register format. We sample, we lab-test, we risk-rate, and we deliver a register your incoming builder or WorkSafe inspector can actually work from.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can you turn around a survey in one week? <span class="plus">+</span></div>
+          <div class="faq-a">Typical residential or single-tenancy commercial: yes. Complex multi-building sites: usually two to three weeks including lab. Rush turnaround available for settlement or transaction deadlines.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you also do the removal? <span class="plus">+</span></div>
+          <div class="faq-a">Deliberately no. We are the independent assessor. Removal is a licensed activity we don't compete in, which is precisely why our reports and clearance certificates aren't contested by removalists.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What does a survey cost? <span class="plus">+</span></div>
+          <div class="faq-a">Priced by building floor area, complexity, and sample count — not a per-hour block. Typical small commercial (~500 m²): $2,400-$3,600 including lab. Written fixed-fee quote within 48 hours of scope call.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Will you attend site meetings with our builder? <span class="plus">+</span></div>
+          <div class="faq-a">Yes. Included in scope for jobs over $8k; hourly rate for smaller engagements. Common for pre-start and clearance meetings on refurbishment sites.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <aside class="sticky">
+      <div class="sidecard">
+        <div class="kicker">Request an inspection</div>
+        <h3>Fixed-fee scope back in 48 hours.</h3>
+        <p>Send us the basics. A licensed assessor calls to confirm scope, then you get a written fixed-fee quote — not an estimate.</p>
+        <div class="field"><label>Site type</label><select><option>Commercial building</option><option>Industrial site</option><option>Healthcare</option><option>Education</option><option>Government</option></select></div>
+        <div class="field"><label>Approx. floor area</label><input type="text" placeholder="e.g. 3,200 m²"></div>
+        <div class="field"><label>Contact email</label><input type="email" placeholder="you@company.com"></div>
+        <button>Get a fixed-fee quote</button>
+      </div>
+
+      <div class="related-services">
+        <h4>Related services</h4>
+        <a>Lead paint testing<span></span></a>
+        <a>Mould identification<span></span></a>
+        <a>PCB assessment<span></span></a>
+        <a>Air quality monitoring<span></span></a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Have a building that needs a <em>second opinion?</em></h2>
+    <div class="actions">
+      <a class="btn-primary" href="#">Request an inspection</a>
+      <a class="phone" href="#">or call 03 8726 0466</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">BENSS.</div>
+        <div class="foot-tag">Independent hazardous-materials and environmental-monitoring consultants. NATA-accredited. Melbourne-based. Working across Australia since 2015.</div>
+      </div>
+      <div class="foot">
+        <h5>Services</h5>
+        <a>Asbestos</a><a>Lead</a><a>Mould</a><a>PCBs</a><a>Air monitoring</a><a>Sustainability</a>
+      </div>
+      <div class="foot">
+        <h5>Company</h5>
+        <a>About</a><a>Case Studies</a><a>Accreditations</a><a>Careers</a><a>Insights</a>
+      </div>
+      <div class="foot">
+        <h5>Contact</h5>
+        <div class="contact">[ Melbourne HQ address ]<br>03 8726 0466<br>hello@benss.com.au</div>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 BENSS Pty Ltd · ABN 72 606 545 920</span>
+      <span>NATA 15789 · LAA VIC-A24-0142 · ISO 14001</span>
+    </div>
+  </div>
+</footer>
+
+<div style="max-width:1360px;margin:40px auto;padding:20px 60px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6C6355;border-top:1px solid #B9B0A0;">
+  <a href="./index.html" style="color:#B7261F;text-decoration:none;">← back to preview index</a>
+</div>
+</body>
+</html>

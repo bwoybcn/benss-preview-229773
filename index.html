@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>BENSS — website redesign preview</title>
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fraunces:400,500|source-serif-4:400|manrope:400,500,600|ibm-plex-mono:400&display=swap">
+<style>
+  :root{--ink-900:#17140F;--ink-700:#3A342A;--ink-500:#6C6355;--ink-300:#B9B0A0;--paper:#F5F1EA;--paper-2:#EFE9DD;--hazard:#B7261F;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink-900);line-height:1.55;padding:60px 40px;min-height:100vh;position:relative;}
+  body::after{content:'';position:fixed;inset:0;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .09  0 0 0 0 .08  0 0 0 0 .06  0 0 0 .045 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");mix-blend-mode:multiply;opacity:.4;z-index:0;}
+  .wrap{max-width:840px;margin:0 auto;position:relative;z-index:1;}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:26px;letter-spacing:-.01em;display:flex;align-items:center;gap:6px;margin-bottom:36px;}
+  .brand::after{content:'';width:6px;height:6px;background:var(--hazard);border-radius:50%;transform:translateY(-8px)}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--hazard);margin-bottom:20px;}
+  .kicker::before{content:'▲ '}
+  h1{font-family:'Fraunces',serif;font-weight:400;font-size:56px;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px;text-wrap:balance;max-width:12ch;}
+  h1 em{font-style:italic;color:var(--hazard);}
+  .deck{font-size:19px;line-height:1.55;color:var(--ink-700);max-width:56ch;margin-bottom:44px;text-wrap:pretty;}
+  .note{background:var(--paper-2);border-left:3px solid var(--hazard);padding:20px 24px;margin-bottom:44px;font-family:'Manrope',system-ui,sans-serif;font-size:14px;color:var(--ink-700);line-height:1.6;}
+  .note b{color:var(--ink-900);font-weight:600;display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--hazard);margin-bottom:8px;}
+  .sec{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-500);border-top:1px solid var(--ink-300);padding-top:14px;margin-bottom:22px;}
+  ul.links{list-style:none;padding:0;margin:0 0 60px;}
+  ul.links li{border-bottom:1px solid var(--ink-300);}
+  ul.links li:first-child{border-top:1px solid var(--ink-300);}
+  ul.links a{display:grid;grid-template-columns:60px 1fr auto;gap:20px;align-items:baseline;padding:22px 0;text-decoration:none;color:var(--ink-900);transition:background 220ms cubic-bezier(.2,.7,.2,1),padding-left 220ms cubic-bezier(.2,.7,.2,1);}
+  ul.links a:hover{background:var(--paper-2);padding-left:14px;}
+  ul.links .n{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--hazard);letter-spacing:.1em;}
+  ul.links .t{font-family:'Fraunces',serif;font-weight:500;font-size:26px;line-height:1.15;}
+  ul.links .t small{display:block;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:15px;color:var(--ink-500);margin-top:6px;letter-spacing:0;}
+  ul.links .arr{font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--ink-300);transition:transform 220ms cubic-bezier(.2,.7,.2,1),color 220ms cubic-bezier(.2,.7,.2,1);align-self:center;}
+  ul.links a:hover .arr{transform:translateX(6px);color:var(--hazard);}
+  footer{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-500);letter-spacing:.06em;border-top:1px solid var(--ink-300);padding-top:20px;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">BENSS.</div>
+    <div class="kicker">Preview · CEO review · Not production</div>
+    <h1>A redesign preview for <em>internal review.</em></h1>
+    <p class="deck">Four mockups from the current redesign brainstorm — new visual system, new information architecture, new content structure. Illustrative only; nothing is final, and no client permission has been assumed for logo or case-study display.</p>
+
+    <div class="note">
+      <b>What you're looking at</b>
+      All copy is draft. All imagery slots are Nano Banana placeholders labelled "illustrative." Client logos on the homepage strip are placeholders — no permission implied. The design system reflects the direction locked in during brainstorm, not the shipped build.
+    </div>
+
+    <div class="sec">§ Four mockups</div>
+    <ul class="links">
+      <li><a href="./homepage.html">
+        <span class="n">01</span>
+        <span class="t">Homepage<small>Hero, accreditations, three service pillars, stat readout, case studies, testimonial, industries, CTA, footer.</small></span>
+        <span class="arr">→</span>
+      </a></li>
+      <li><a href="./service-page.html">
+        <span class="n">02</span>
+        <span class="t">Service page template<small>Worked example: Asbestos Testing & Inspections. Regulatory callout, 5-step process, deliverables, related cases, FAQ, sticky sidebar form.</small></span>
+        <span class="arr">→</span>
+      </a></li>
+      <li><a href="./case-study.html">
+        <span class="n">03</span>
+        <span class="t">Case study template<small>Worked example: CASE 004 — regional public hospital asbestos re-audit. Context, scope, methodology, outcomes, testimonial, deliverables.</small></span>
+        <span class="arr">→</span>
+      </a></li>
+      <li><a href="./design-system.html">
+        <span class="n">04</span>
+        <span class="t">Design system<small>Type specimens, colour palette, component library. Reference for any component appearing across the templates.</small></span>
+        <span class="arr">→</span>
+      </a></li>
+    </ul>
+
+    <footer>Preview · noindex · shared privately for internal review only.</footer>
+  </div>
+</body>
+</html>
