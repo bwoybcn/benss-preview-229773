@@ -7,7 +7,7 @@
 <title>BENSS · Design system</title>
 </head>
 <body style="margin:0;background:#F5F1EA;">
-<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fraunces:400,500|source-serif-4:400,600|inter:400,500,600|ibm-plex-mono:400,500&display=swap">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fraunces:400,500|source-serif-4:400,600|manrope:400,500,600|ibm-plex-mono:400,500&display=swap">
 
 <style>
   :root {
@@ -17,8 +17,9 @@
     --link:#7A0000; --success:#2E6B44;
     --f-display:'Fraunces',ui-serif,Georgia,serif;
     --f-body:'Source Serif 4','Iowan Old Style',Georgia,serif;
-    --f-ui:'Inter',system-ui,sans-serif;
+    --f-ui:'Manrope','Söhne',system-ui,sans-serif;                     /* v2: Manrope replaces Inter */
     --f-mono:'IBM Plex Mono',Consolas,monospace;
+    --ease-out:cubic-bezier(.2,.7,.2,1); --dur-fast:140ms; --dur:220ms; /* v2: motion tokens */
   }
   .ds-frame { background:var(--paper); color:var(--ink-900); font-family:var(--f-body); padding:32px; border-radius:16px; margin:16px 0; }
   .ds-frame h2, .ds-frame h3 { font-family:var(--f-display); font-weight:400; letter-spacing:-.01em; margin:0 0 12px; color:var(--ink-900); }
@@ -102,6 +103,17 @@
 
   .grid-2 { display:grid; grid-template-columns:1fr; gap:20px; }
   @media (min-width:820px) { .grid-2 { grid-template-columns:1fr 1fr; } }
+
+  /* ===== v2 taste-skill pass ===== */
+  .ds-frame{position:relative;}
+  .ds-frame::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .09  0 0 0 0 .08  0 0 0 0 .06  0 0 0 .045 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");background-size:240px 240px;mix-blend-mode:multiply;opacity:.32;z-index:0;border-radius:16px;}
+  .ds-frame > *{position:relative;z-index:1;}
+  .ds-frame h2, .ds-frame h3, .ds-frame h4, .ds-frame blockquote{text-wrap:balance;}
+  .ds-frame p, .ds-frame li{text-wrap:pretty;}
+  .ds-frame :focus-visible{outline:2px solid var(--hazard);outline-offset:2px;border-radius:1px;}
+  .ds-frame .sw{transition:transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);}
+  .ds-frame .sw:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(23,20,15,.10);}
+  @media (prefers-reduced-motion:reduce){.ds-frame *, .ds-frame *::before, .ds-frame *::after{transition:none !important;animation:none !important;}}
 </style>
 
 <h2>Design system — editorial + hazard-signal</h2>

@@ -7,13 +7,15 @@
 <title>BENSS · Case study preview</title>
 </head>
 <body style="margin:0;background:#F5F1EA;">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fraunces:400,500|source-serif-4:400,400i|manrope:400,500,600|ibm-plex-mono:400&display=swap">
 <style>
   :root{
     --ink-900:#111014; --ink-700:#2b2a2f; --ink-500:#55545a; --ink-300:#8B8579;
     --paper:#F5F1E8; --paper-2:#EDE8DA; --paper-3:#E4DECC;
     --rule:#231F1B; --hazard:#B7261F; --slate:#5C6470; --moss:#4A5A3E;
     --font-display:'Fraunces',Georgia,serif; --font-body:'Source Serif 4',Georgia,serif;
-    --font-ui:'Inter',system-ui,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+    --font-ui:'Manrope','Söhne',system-ui,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace; /* v2: Manrope */
+    --ease-out:cubic-bezier(.2,.7,.2,1); --dur-fast:140ms; --dur:220ms;                                   /* v2: motion tokens */
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:var(--font-body);background:var(--paper);color:var(--ink-900);line-height:1.55;font-size:17px}
@@ -141,6 +143,31 @@
   .foot a{display:block;color:var(--paper);text-decoration:none;font-family:var(--font-ui);font-size:14px;padding:5px 0}
   .foot .contact{font-family:var(--font-mono);font-size:13px;color:#d8d3c5;line-height:1.6}
   .legal{border-top:1px solid #232028;padding-top:24px;display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;color:#8B8579;letter-spacing:.06em}
+
+  /* ===== v2 taste-skill pass ===== */
+  body{position:relative;}
+  body::after{content:'';position:fixed;inset:0;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .09  0 0 0 0 .08  0 0 0 0 .06  0 0 0 .045 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");background-size:240px 240px;mix-blend-mode:multiply;opacity:.35;z-index:9999;}
+  h1, h2, h3, h4, blockquote{text-wrap:balance;}
+  p, li{text-wrap:pretty;}
+  .out-cell .val, .meta-cell .val{font-variant-numeric:tabular-nums;}
+  :focus-visible{outline:2px solid var(--hazard);outline-offset:2px;border-radius:1px;}
+  .nav-links a{position:relative;transition:color var(--dur) var(--ease-out);}
+  .nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--hazard);transform:scaleX(0);transform-origin:left;transition:transform var(--dur) var(--ease-out);}
+  .nav-links a:hover{color:var(--hazard);}
+  .nav-links a:hover::after{transform:scaleX(1);}
+  .btn-primary{transition:background var(--dur) var(--ease-out), transform var(--dur-fast) var(--ease-out);}
+  .btn-primary:hover{background:var(--hazard);}
+  .btn-primary:active{transform:translateY(1px);}
+  .sidecard .btn{transition:background var(--dur) var(--ease-out), transform var(--dur-fast) var(--ease-out);}
+  .sidecard .btn:hover{background:#8f1e18;}
+  .sidecard .btn:active{transform:translateY(1px);}
+  .related-list a{transition:padding-left var(--dur) var(--ease-out), color var(--dur) var(--ease-out);}
+  .related-list a:hover{padding-left:6px;color:var(--hazard);}
+  .scope-cell{transition:background var(--dur) var(--ease-out);}
+  .scope-cell:hover{background:var(--paper-2);}
+  .checklist li{transition:padding-left var(--dur) var(--ease-out);}
+  .checklist li:hover{padding-left:8px;}
+  @media (prefers-reduced-motion:reduce){*, *::before, *::after{transition:none !important;animation:none !important;}}
 </style>
 
 <nav class="top">
