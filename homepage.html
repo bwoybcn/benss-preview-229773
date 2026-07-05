@@ -189,9 +189,11 @@
   .hp .hero-figure { background: #2B2620 url("./img/hero-consultant-tyvek-ceiling-void.png") center 35%/cover no-repeat; } /* v3.1: shift crop up so consultant is not bottom-heavy */
   .hp .hero-figure::before { display:none; } /* remove grid overlay so photo reads clean */
   .hp .hero-figure::after { background:rgba(0,0,0,.5); padding:6px 10px; border-radius:2px; bottom:16px; left:18px; right:auto; max-width:calc(100% - 60px); color:rgba(255,255,255,.85); }
-  .hp .case:nth-of-type(1) .cover { background: #4A3D2E url("./img/case004-hospital-ward-corridor.png") center/cover no-repeat; }
-  .hp .case:nth-of-type(2) .cover { background: #4A3D2E url("./img/case007-heritage-warehouse.png") center/cover no-repeat; }
-  .hp .case:nth-of-type(3) .cover { background: #4A3D2E url("./img/case011-utility-depot-stack.png") center/cover no-repeat; }
+  /* v3.2: force horizontal overflow so we can re-anchor square 1024x1024 renders */
+  .hp .case .cover { background-size:200% auto; background-repeat:no-repeat; background-color:#4A3D2E; }
+  .hp .case:nth-of-type(1) .cover { background-image:url("./img/case004-hospital-ward-corridor.png"); background-position:100% 40%; } /* right-anchor: consultant is on right side of source */
+  .hp .case:nth-of-type(2) .cover { background-image:url("./img/case007-heritage-warehouse.png"); background-position:center 45%; }
+  .hp .case:nth-of-type(3) .cover { background-image:url("./img/case011-utility-depot-stack.png"); background-position:center 40%; }
   .hp .case .cover::before { background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%); background-size:auto; } /* dark scrim so ref+cat stay readable */
 </style>
 

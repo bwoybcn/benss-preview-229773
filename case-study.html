@@ -170,9 +170,10 @@
   @media (prefers-reduced-motion:reduce){*, *::before, *::after{transition:none !important;animation:none !important;}}
 
   /* ===== v3 nano-banana imagery ===== */
-  .hero-image { background: #3d0e0c url("./img/case004-hospital-ward-corridor.png") center/cover no-repeat; }
-  .hero-image::before { background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%); } /* dark scrim for caption + badge */
-  .inline-image { background: #2a2f36 url("./img/case004-hepa-night-sampling.png") center/cover no-repeat; }
+  /* v3.2: force horizontal overflow so consultant on right of source lands centre-ish */
+  .hero-image { background:#3d0e0c url("./img/case004-hospital-ward-corridor.png") 75% 45%/150% auto no-repeat; }
+  .hero-image::before { background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%); }
+  .inline-image { background:#2a2f36 url("./img/case004-hepa-night-sampling.png") center 45%/130% auto no-repeat; }
   .inline-image::before { background:linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%); }
 </style>
 
